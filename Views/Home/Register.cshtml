@@ -1,0 +1,108 @@
+﻿@model Funcionario
+@{
+    Layout = "~/Views/Shared/_layoutLogin.cshtml";
+    ViewData["Title"] = "Register";
+    var errorMessage = TempData["ErrorMessage"];
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
+
+<div class="container py-2 h-100 position-absolute top-50 start-50 translate-middle" >
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem; margin-bottom: 0;">
+                <div class="row g-0">
+                    <div class="col-md-4 col-lg-5 d-none d-md-block">
+                        <img src="~/Content/Login-image.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;"/>
+                    </div>
+                    <div class="col-md-7 col-lg-7 d-flex align-items-center">
+                        <div class="card-body p-0 p-lg-3 text-black" style="margin: 0">
+                            <form asp-controller="Home" asp-action="Register" method="post">
+
+                                <div class="d-flex align-items-center mb-3 pb-1">
+                                    <i class="fa-solid fa-seedling" style="font-size: 5vh"></i>
+                                    <span class="h1 fw-bold mb-0">AgroPindas</span>
+                                </div>
+
+                                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Preencha as informações abaixo</h5>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="formnome">Seu nome</label>
+                                            <input type="text" id="formnome" class="form-control form-control-lg" asp-for="Nome" />
+                                            <span asp-validation-for="Nome" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="formcpf">Seu CPF (apenas números)</label>
+                                            <input type="text" id="formcpf" class="form-control form-control-lg" asp-for="CPF" />
+                                            <span asp-validation-for="CPF" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="formfone">Seu Telefone (sem DDD)</label>
+                                            <input type="text" id="formfone" class="form-control form-control-lg" asp-for="Fone" />
+                                            <span asp-validation-for="Fone" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="DataNascimento">Data de Nascimento</label>
+                                            <input type="date" class="form-control form-control-lg" asp-for="DataNascimento" required/>
+                                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="formemail">Email</label>
+                                            <input type="email" id="formemail" class="form-control  form-control-lg" asp-for="Email" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="formsenha">Senha</label>
+                                            <input type="password" id="formsenha" class="form-control form-control-lg" asp-for="Senha" />
+                                            <span asp-validation-for="Senha" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="formsenha">Tipo de User</label>
+                                            <select class="form-control form-control-lg" asp-for="IdCargo">
+                                                <option value="0">Selecione...</option>
+                                                <option value="1">Master</option>
+                                                <option value="2">Gerencial</option>
+                                                <option value="3">Produção</option>
+                                            </select>
+                                            <span asp-validation-for="IdCargo" class="text-danger"></span>
+                                            <a asp-action="Register" class="btn btn-dark btn-lg btn-block mb-4" style="margin-top: 15px">Limpar formulário</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-1 mb-4">
+                                    <input type="submit" class="btn btn-dark btn-lg btn-block" value="Registrar-se">
+                                </div>
+
+                                <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                    Já tem uma conta? <a style="color: #393f81;" asp-controller="Home" asp-action="Index">Login</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
