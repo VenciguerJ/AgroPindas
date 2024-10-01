@@ -11,23 +11,23 @@ namespace agropindas.Models
 
         [Required(ErrorMessage = "Preencha o nome")]
         [RegularExpression(@"^.{1,45}$", ErrorMessage = "O campo deve conter apenas letras e números, com até 45 caracteres.")]
-        public string Nome { get; set; }
+        public string ?Nome { get; set; }
 
         [Required(ErrorMessage = "O CPF é obrigatório.")]
         [RegularExpression(@"^\d{11}$", ErrorMessage = "O CPF deve ter 11 dígitos.")]
-        public string CPF { get; set; }
+        public string ?CPF { get; set; }
 
         [Required(ErrorMessage = "A senha é obrigatória.")]
         [StringLength(45, ErrorMessage = "A senha deve ter até 45 Caracteres")]
-        public string Senha { get; set; }
+        public string ?Senha { get; set; }
 
         [Required(ErrorMessage = "O telefone é obrigatório.")]
         [RegularExpression(@"^\d{11}$", ErrorMessage = "O telefone deve ter 11 dígitos")]
-        public string Fone { get; set; }
+        public string ?Fone { get; set; }
 
         [Required(ErrorMessage = "O e-mail é obrigatório")]
         [EmailAddress(ErrorMessage = "O e-mail não é válido")]
-        public string Email { get; set; }
+        public string ?Email { get; set; }
 
         [Required(ErrorMessage = "O campo é obrigatório")]
         [Range(1, int.MaxValue, ErrorMessage = "O ID do cargo deve ser um número positivo e maior que 0")]
@@ -36,7 +36,7 @@ namespace agropindas.Models
         public Funcionario ?Superior { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime DataNascimento { get; set; }
+        public DateTime ?DataNascimento { get; set; }
 
         public void debugger()
         {

@@ -28,15 +28,10 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(Funcionario formFunc)
     {
-        if (!ModelState.IsValid)
-        {
-            Console.WriteLine("Chegou aqui pelo menos");
-            return RedirectToAction("Index");
-        }
 
         var funcionarioDB = await _login.GetFunc(formFunc);
 
-        Console.WriteLine(funcionarioDB.Nome, funcionarioDB.Senha);
+        Console.WriteLine(funcionarioDB.Email, funcionarioDB.Senha);
     
         if (formFunc.Email == funcionarioDB.Email)
         {
