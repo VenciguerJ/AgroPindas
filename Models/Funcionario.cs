@@ -18,7 +18,7 @@ namespace agropindas.Models
         public string ?CPF { get; set; }
 
         [Required(ErrorMessage = "A senha é obrigatória.")]
-        [StringLength(45, ErrorMessage = "A senha deve ter até 45 Caracteres")]
+        [RegularExpression(@"^.{1,45}$",ErrorMessage = "A senha deve ter até 45 Caracteres")]
         public string ?Senha { get; set; }
 
         [Required(ErrorMessage = "O telefone é obrigatório.")]
