@@ -36,15 +36,45 @@ CREATE TABLE Funcionarios(
 INSERT INTO Funcionarios(cpf,senha,nome,telefone,email,id_cargo,superior,data_nascimento)
 VALUES ('99999999999','master','master','99999999999','master',1,0,getdate());
 
+
+DROP TABLE IF EXISTS UnidadeCadastro;
+
+CREATE TABLE UnidadeCadastro(
+	Id int identity not null primary key,
+	Nome varchar(50) not null
+);
+
+
+INSERT INTO UnidadeCadastro(Nome)
+VALUES ('Grama'),('Quilo'),('Unidade');
+
+DROP TABLE IF EXISTS TipoProduto;
+
+CREATE TABLE TipoProduto(
+	Id int identity not null primary key,
+	Nome varchar(50) not null
+);
+
+
+INSERT INTO TipoProduto(Nome)
+VALUES ('Embalagem'),('Materia Prima');
+
+
 DROP TABLE IF EXISTS Produto;
 
 CREATE TABLE Produto(
-	id_produto int identity not null primary key,
-	nome_produto varchar(45) not null,
-	descricao varchar(90) not null,
-	temperatura_plantio int not null,
-	dias_para_colheita int not null
+	Id int identity not null primary key,
+	Nome varchar(45) not null,
+	Descricao varchar(90) null,
+	TemperaturaPlantio int not null,
+	DiasColheita int not null,
+	UnidadeCadastro int not null,
+	TipoProduto int not null,
+	constraint fk_unidade_cadastro foreign key (UnidadeCadastro) references UnidadeCadastro(Id),
+	constraint fk_tipo_produto foreign key (TipoProduto) references TipoProduto(Id)
 );
+
+
 
 DROP TABLE IF EXISTS Estoque;
 
@@ -53,18 +83,18 @@ CREATE TABLE Estoque(
 	id_produto int not null,
 	quantidade_entrada int null,
 	quantidade_saida int not null,
-	constraint fk_estoque_produto foreign key (id_produto) references Produto(id_produto)
+	constraint fk_estoque_produto foreign key (id_produto) references Produto(Id)
 );
 
 DROP TABLE IF EXISTS Fornecedor;
 
 CREATE TABLE Fornecedor(
-	id_fornecedor int identity not null primary key,
-	cnpj varchar(14) unique not null,
-	nome varchar(45) not null,
-	ddd varchar(2) not null,
-	fone varchar(9) not null,
-	email varchar(45) not null
+	Id int identity not null primary key,
+	CNPJ varchar(14) unique not null,
+	RazaoSocial varchar(45) not null,
+	Endereco varchar(250) null,
+	Fone varchar(11) null,
+	Email varchar(45) null
 );
 
 DROP TABLE IF EXISTS Compra;
@@ -76,8 +106,8 @@ CREATE TABLE Compra(
 	id_estoque int not null,
 	quantidade_compra int null,
 	valor_unitario money not null,
-	constraint fk_compra_produto foreign key (id_produto) references Produto(id_produto),
-	constraint fk_compra_fornecedor foreign key (id_fornecedor) references Fornecedor(id_fornecedor),
+	constraint fk_compra_produto foreign key (id_produto) references Produto(Id),
+	constraint fk_compra_fornecedor foreign key (id_fornecedor) references Fornecedor(Id),
 	constraint fk_compra_estoque foreign key (id_estoque) references Estoque(id_estoque)
 );
 

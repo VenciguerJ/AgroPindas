@@ -41,11 +41,13 @@ public class HomeController : Controller
             }
             else
             {
+                TempData["ErrorMessage"] = "Senha Incorreta!";
                 return RedirectToAction("Index");
             }
         }
         else
         {
+            TempData["ErrorMessage"] = "Usuário não encontrado!";
             return RedirectToAction("Index");
         }
     }

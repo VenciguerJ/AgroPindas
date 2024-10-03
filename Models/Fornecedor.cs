@@ -1,40 +1,18 @@
 namespace Fornecedores_config
 {
     public class Fornecedor
-    {
-        private double cnpj;
-        public double CNPJ
-        {
-            get { return cnpj; }
-            set { cnpj = value; }
-        }
+    { 
+        public double CNPJ { get; set; }
 
-        private string razaoSocial;
-        public string RazaoSocial
-        {
-            get { return razaoSocial; }
-            set { razaoSocial = value; }
-        }
+        public string RazaoSocial { get; set;  }
 
-        private string endereco;
-        public string Endereco
-        {
-            get { return endereco; }
-            set { endereco = value; }
-        }
+        public string Endereco { get; set; }
 
-        public Fornecedor(double cnpj, string nome, string end)
-        {
-            CNPJ = cnpj;
-            Endereco = end;
-            RazaoSocial = nome;
-        }
+        public string Fone { get; set; }
 
-        public Fornecedor(double cnpj2, string nome)
-        {
-            CNPJ = cnpj2;
-            RazaoSocial = nome;
-        }
+        public string Email { get; set; }
 
+
+        public Fornecedor() { }
     }
 }
