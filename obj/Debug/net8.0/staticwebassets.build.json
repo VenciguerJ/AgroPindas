@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lSnBRGV0M1+t8tqrTSk4NTeUweMUFR/a+iG6n4rbua8=",
+  "Hash": "uvBwAPEpatY5Ar9iQWDsiJY7FFVOgikihWKdK36iPr8=",
   "Source": "agropindas",
   "BasePath": "_content/agropindas",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\css\\style.css",
+      "SourceId": "agropindas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\",
+      "BasePath": "_content/agropindas",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\favicon.ico",

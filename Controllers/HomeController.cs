@@ -28,10 +28,12 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(Funcionario formFunc)
     {
-
+        if (!ModelState.IsValid)
+        {
+            TempData["ErrorMessage"] = "Login inválido";
+            return RedirectToAction("Index");
+        }
         var funcionarioDB = await _login.GetFunc(formFunc);
-
-        Console.WriteLine(funcionarioDB.Email, funcionarioDB.Senha);
     
         if (formFunc.Email == funcionarioDB.Email)
         {

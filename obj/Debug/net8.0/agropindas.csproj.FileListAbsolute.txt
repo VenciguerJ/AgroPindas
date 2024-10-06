@@ -505,3 +505,8 @@ C:\PC\Faculdade\4 Semestre\PIM\agropindas\obj\Debug\net8.0\ref\agropindas.dll
 D:\PC\Faculdade\4 Semestre\PIM\agropindas\obj\Debug\net8.0\agropindas.sourcelink.json
 D:\PC\Faculdade\4 Semestre\PIM\agropindas\obj\Debug\net8.0\scopedcss\Views\Shared\_layoutLogin.cshtml.rz.scp.css
 C:\PC\Faculdade\4 Semestre\PIM\agropindas\obj\Debug\net8.0\scopedcss\Views\Shared\_layoutLogin.cshtml.rz.scp.css
+C:\PC\Faculdade\4 Semestre\PIM\agropindas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\PC\Faculdade\4 Semestre\PIM\agropindas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\PC\Faculdade\4 Semestre\PIM\agropindas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\PC\Faculdade\4 Semestre\PIM\agropindas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\PC\Faculdade\4 Semestre\PIM\agropindas\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
