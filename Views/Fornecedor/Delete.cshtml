@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Fornecedores";
+    ViewData["Title"] = "Deletar Fornecedor";
 }
 @model IEnumerable<Fornecedor>
 
@@ -12,11 +12,9 @@
     </label>
     <input type="submit" value="procurar">
 </form>
-<br />
-<a asp-action="Create" class="btn btn-success">Novo Fornecedor</a>
-<hr />
-<table class="table table-striped table-bordered table-hover">
-    <thead class="thead-dark">
+
+<table class="table table-striped">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
@@ -27,7 +25,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.RazaoSocial)
             </th>
-            <th colspan="2">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -44,10 +41,10 @@
                     @Html.DisplayFor(modelItem => fornecedor.RazaoSocial)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@fornecedor.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a asp-action="Edit" asp-route-id="@fornecedor.Id" class="btn btn-warning">Editar</a>
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@fornecedor.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-action="Delete" asp-route-id="@fornecedor.Id" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
         }

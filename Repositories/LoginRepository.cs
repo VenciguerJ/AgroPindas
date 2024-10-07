@@ -16,7 +16,7 @@ public class LoginRepository : ILogin<Funcionario>
     {
         var query = @"select *
         from Funcionarios
-        where email = @email and senha = @senha";
+        where email = @email";
 
         var parameters = new Dictionary<string, object>
         {
@@ -30,7 +30,15 @@ public class LoginRepository : ILogin<Funcionario>
             { "superior", entity.Superior },
             { "data_nascimento", entity.DataNascimento }
         };
-        return await _dbConnection.QueryFirstOrDefaultAsync<Funcionario>(query, parameters);
+        var func = await _dbConnection.QueryFirstOrDefaultAsync<Funcionario>(query, parameters);
+        if (func == null)
+        {
+            return null;
+        }
+        else
+        {
+            return func;
+        }
     }
     public async Task<Funcionario?> VerificaUserExistente(Funcionario entity)
     {

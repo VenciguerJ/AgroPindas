@@ -22,6 +22,7 @@ public class HomeController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
+        Console.WriteLine("Passou por aqui");
         return View();
     }
 
@@ -30,10 +31,8 @@ public class HomeController : Controller
     {
 
         var funcionarioDB = await _login.GetFunc(formFunc);
-
-        Console.WriteLine(funcionarioDB.Email, funcionarioDB.Senha);
-    
-        if (formFunc.Email == funcionarioDB.Email)
+        
+        if (funcionarioDB != null)
         {
             if (formFunc.Senha == funcionarioDB.Senha)
             {

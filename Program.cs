@@ -6,10 +6,10 @@ using System.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 
-string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
-                        TrustServerCertificate=True;";
+//string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
+//                        TrustServerCertificate=True;";
 
-//string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PINDUCAS_farm;Integrated Security=True;TrustServerCertificate=True;";
+string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PINDUCAS_farm;Integrated Security=True;TrustServerCertificate=True;";
 
 
 // Add services to the container.
@@ -19,6 +19,7 @@ builder.Services.AddScoped<IDbConnection>(sp => new SqlConnection(connectionStri
 
 builder.Services.AddScoped<ICrudRepository<Funcionario>, FuncionarioRepository>();
 builder.Services.AddScoped<ILogin<Funcionario>, LoginRepository>();
+builder.Services.AddScoped<ICrudRepository<Fornecedor>, FornecedorRepository>();
 
 
 var app = builder.Build();
@@ -27,7 +28,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler(" / Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
