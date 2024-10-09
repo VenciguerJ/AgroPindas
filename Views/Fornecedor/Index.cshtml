@@ -4,26 +4,27 @@
 @model IEnumerable<Fornecedor>
 
 <h1>@ViewData["Title"]</h1>
-
-<form asp-action="Index" method="post">
-    <label>procurar
-        @* <input type="text" asp-for="RazaoSocial" /> *@
-        <span>Verificar viabilidade depois</span>
-    </label>
-    <input type="submit" value="procurar">
-</form>
+    
 <br />
-<a asp-action="Create" class="btn btn-success">Novo Fornecedor</a>
+
+<nav class="navbar navbar-light bg-light d-flex justify-content-between">
+    <a asp-action="Create" class="btn btn-success">Novo Fornecedor</a>
+    <form class="form-inline d-flex">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+</nav>
+
 <hr />
 <table class="table table-striped table-bordered table-hover">
-    <thead class="thead-dark">
+    <thead class="thead-dark" style="color: #18b955">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CNPJ)
-            </th>
+            </th> 
             <th>
                 @Html.DisplayNameFor(model => model.RazaoSocial)
             </th>

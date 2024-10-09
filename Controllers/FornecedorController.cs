@@ -21,15 +21,39 @@ namespace agropindas.Controllers;
         }
 
     [HttpGet]
-    public async Task<IActionResult> Edit()
+    public async Task<IActionResult> Edit(Fornecedor f)
     {
-        return View();
+        var fonecedorDB = await _crudRepository.Get(f.Id);
+        return View(fonecedorDB); 
     }
-
-    [HttpGet]
-    public async Task<IActionResult> Delete()
+    [HttpPost]
+    public async Task<IActionResult> EditSql(Fornecedor f)
     {
-        return View();
+        try
+        {
+            var funcIdCorreto = await _crudRepository.Get(f.CNPJ); // pegando o id correto pois na mudança de rotas ele perde o ID, no formulário não podemos manipular o id, por isso id aqui é 0
+            f.Id = funcIdCorreto.Id;
+            await _crudRepository.Update(f);
+            TempData["SuccessMessage"] = "Fornecedor alterado com sucesso!";
+            return RedirectToAction("Index");
+        }
+        catch (SqlException sqlex)
+        {
+            TempData["ErrorMessage"] = sqlex.ToString;
+            return RedirectToAction("Index");
+        }
+        catch (Exception ex)
+        {
+            TempData["ErrorMessage"] = ex.ToString;
+            return RedirectToAction("Index");
+        }
+    }
+    [HttpGet]
+    public async Task<IActionResult> Delete(Fornecedor fornecedor)
+    {
+        await _crudRepository.Delete(fornecedor.Id);
+        TempData["SuccessMessage"] = "Fornecedor Excluído com sucesso!!";
+        return RedirectToAction("Index");
     }
 
     [HttpGet]

@@ -26,12 +26,12 @@ public class FornecedorRepository : ICrudRepository<Fornecedor>
 
     public async Task<Fornecedor?> Get(int num)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Fornecedor>("SELECT * FROM Ingredientes WHERE Id = @Id", new { Id = num });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Fornecedor>("SELECT * FROM Fornecedor WHERE Id = @Id", new { Id = num });
     }
 
-    public async Task <Fornecedor?> Get(string str)
+    public async Task <Fornecedor?> Get(string cnpj)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Fornecedor>("SELECT * FROM Funcionarios WHERE email = @Email", new { Email = str });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Fornecedor>("SELECT * FROM Fornecedor WHERE CNPJ = @CNPJ", new { CNPJ = cnpj });
     }
 
     public async Task Add(Fornecedor entity)
@@ -53,12 +53,19 @@ public class FornecedorRepository : ICrudRepository<Fornecedor>
 
     public async Task Update(Fornecedor func)
     {
-        var query = "UPDATE Ingredientes SET Nome = @Nome, UnidadeMedida = @UnidadeMedida WHERE Id = @Id";
+        func.Debugger();
+        var query = @"UPDATE Fornecedor SET 
+                        CNPJ = @CNPJ, 
+                        RazaoSocial = @RazaoSocial, 
+                        Endereco = @Endereco, 
+                        Fone = @Fone, 
+                        Email = @Email 
+                    WHERE Id = @Id";
         await _dbConnection.ExecuteAsync(query, func);
     }
 
     public async Task Delete(int id)
     {
-        await _dbConnection.ExecuteAsync("DELETE FROM Ingredientes WHERE Id = @Id", new { Id = id });
+        await _dbConnection.ExecuteAsync("DELETE FROM Fornecedor WHERE Id = @Id", new { Id = id });
     }
 }

@@ -24,6 +24,16 @@ namespace agropindas.Models
         [MaxLength(45, ErrorMessage = "O campo deve conter {1} caracteres")]
         public string Email { get; set; }
 
+        public void Debugger()
+        {
+            Console.WriteLine($"ID: {Id}");
+            Console.WriteLine($"CNPJ: {CNPJ}");
+            Console.WriteLine($"Razão Social: {RazaoSocial}");
+            Console.WriteLine($"Endereço: {Endereco}");
+            Console.WriteLine($"Telefone: {Fone}");
+            Console.WriteLine($"Email: {Email}");
+        }
+
         public Fornecedor() { }
 
     }
