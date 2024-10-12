@@ -74,6 +74,7 @@ public class HomeController : Controller
             {
                 Console.WriteLine("veio");
                 await _crudRepository.Add(formFunc);
+                TempData["SuccessMessage"] = "Usuário criado com sucesso!";
                 return RedirectToAction("Index");
             }
             else
@@ -99,7 +100,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Sobre()
     {
         return View();
     }

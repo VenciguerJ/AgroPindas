@@ -7401,19 +7401,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jeanp\\.nuget\\packages\\": {}
+    "C:\\Users\\Xeansao\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\agropindas.csproj",
+      "projectUniqueName": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\agropindas.csproj",
       "projectName": "agropindas",
-      "projectPath": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\agropindas.csproj",
-      "packagesPath": "C:\\Users\\jeanp\\.nuget\\packages\\",
-      "outputPath": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\obj\\",
+      "projectPath": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\agropindas.csproj",
+      "packagesPath": "C:\\Users\\Xeansao\\.nuget\\packages\\",
+      "outputPath": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jeanp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Xeansao\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7421,6 +7421,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7486,16 +7487,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

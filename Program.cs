@@ -6,10 +6,10 @@ using System.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 
-//string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
-//                        TrustServerCertificate=True;";
+string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
+                        TrustServerCertificate=True;";
 
-string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PINDUCAS_farm;Integrated Security=True;TrustServerCertificate=True;";
+//string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PINDUCAS_farm;Integrated Security=True;TrustServerCertificate=True;";
 
 
 // Add services to the container.
@@ -17,9 +17,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IDbConnection>(sp => new SqlConnection(connectionString));
 
-builder.Services.AddScoped<ICrudRepository<Funcionario>, FuncionarioRepository>();
 builder.Services.AddScoped<ILogin<Funcionario>, LoginRepository>();
+builder.Services.AddScoped<ICrudRepository<Funcionario>, FuncionarioRepository>();
 builder.Services.AddScoped<ICrudRepository<Fornecedor>, FornecedorRepository>();
+builder.Services.AddScoped<ICrudRepository<Produto>, ProdutoRepository>();
+builder.Services.AddScoped<ICrudRepository<UnidadeCadastro>, UnidadeCadastroRepository>();
 
 
 var app = builder.Build();
