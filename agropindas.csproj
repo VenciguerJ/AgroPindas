@@ -9,15 +9,19 @@
   <ItemGroup>
     <Compile Remove="Content\**" />
     <Compile Remove="NovaPasta\**" />
+    <Compile Remove="Repositories\**" />
     <Compile Remove="Views\Shared\NovaPasta\**" />
     <Content Remove="Content\**" />
     <Content Remove="NovaPasta\**" />
+    <Content Remove="Repositories\**" />
     <Content Remove="Views\Shared\NovaPasta\**" />
     <EmbeddedResource Remove="Content\**" />
     <EmbeddedResource Remove="NovaPasta\**" />
+    <EmbeddedResource Remove="Repositories\**" />
     <EmbeddedResource Remove="Views\Shared\NovaPasta\**" />
     <None Remove="Content\**" />
     <None Remove="NovaPasta\**" />
+    <None Remove="Repositories\**" />
     <None Remove="Views\Shared\NovaPasta\**" />
   </ItemGroup>
 
@@ -34,10 +38,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

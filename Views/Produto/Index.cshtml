@@ -9,8 +9,8 @@
 
 <nav class="navbar navbar-light bg-light d-flex justify-content-between">
     <a asp-action="Create" class="btn btn-success">Novo Produto</a>
-    <form class="form-inline d-flex">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline d-flex" asp-action="Index">
+        <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Pesquise o produto">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
 </nav>
@@ -19,6 +19,9 @@
 <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark" style="color: #18b955">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -36,13 +39,16 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => produto.Id)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => produto.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.TipoProduto)
+                    @Html.DisplayFor(modelItem => produto.OTipoProduto.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.UnidadeCadastro)
+                    @Html.DisplayFor(modelItem => produto.OUnidadeCadastro.Nome)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@produto.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>

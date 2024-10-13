@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using agropindas.Models;
 using agropindas.Repositories;
 using Microsoft.Data.SqlClient;
+using Microsoft.CodeAnalysis.FlowAnalysis;
 
 namespace agropindas.Controllers;
     public class FornecedorController : Controller
@@ -13,10 +14,36 @@ namespace agropindas.Controllers;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var fornecedores = await _crudRepository.GetAll();
-            return View(fornecedores);
+            try
+            {
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    var fornecedores = await _crudRepository.GetAll(searchString);
+                    return View(fornecedores);
+                }
+                else
+                {
+                    var fornecedores = await _crudRepository.GetAll();
+                    return View(fornecedores);
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                var fornecedoresbkp = await _crudRepository.GetAll();
+                TempData["ErrorMessage"] = "Sistema identificou um problema de banco de dados ao realizar a pesquisa";
+                Console.WriteLine(sqlex);
+                return View(fornecedoresbkp);
+            }
+            catch (Exception ex)
+            {
+                var fornecedoresbkp = await _crudRepository.GetAll();
+                TempData["ErrorMessage"] = "Sistema identificou um erro ao realizar a pesquisa";
+                Console.WriteLine(ex);
+                return View(fornecedoresbkp);
+            }
+            
         }
 
     [HttpGet]

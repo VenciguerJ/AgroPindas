@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using agropindas.Models;
-using Microsoft.Data.SqlClient;
 using System.Data;
 
 
@@ -19,6 +18,11 @@ public class FuncionarioRepository : ICrudRepository<Funcionario>
         return await _dbConnection.QueryAsync<Funcionario>("SELECT * FROM Funncionarios");
     }
 
+    public async Task<IEnumerable<Funcionario>> GetAll(string nome)
+    {
+        return await _dbConnection.QueryAsync<Funcionario>("SELECT * FROM Funncionarios where Nome Like @Nome", new { Nome = nome });
+    }
+
     public async Task<Funcionario?> Get(int id)
     {
         return await _dbConnection.QueryFirstOrDefaultAsync<Funcionario>("SELECT * FROM Ingredientes WHERE Id = @Id", new { Id = id });
@@ -31,7 +35,6 @@ public class FuncionarioRepository : ICrudRepository<Funcionario>
 
     public async Task Add(Funcionario entity)
     {
-        Console.WriteLine("Tentou passar pelo banco de dados");
 		var query = @"INSERT INTO Funcionarios (cpf, senha, nome, telefone, email, id_cargo, data_nascimento) 
                     VALUES (@cpf, @senha, @nome, @telefone, @email,@id_cargo, @data_nascimento)";
 

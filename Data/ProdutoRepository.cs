@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using agropindas.Models;
-using Microsoft.Data.SqlClient;
 using System.Data;
+using System.ComponentModel;
 
 
 namespace agropindas.Repositories;
@@ -19,50 +19,62 @@ public class ProdutoRepository : ICrudRepository<Produto>
         return await _dbConnection.QueryAsync<Produto>("SELECT * FROM Produto");
     }
 
+    public async Task<IEnumerable<Produto>>GetAll(string nome)
+    {
+        return await _dbConnection.QueryAsync<Produto>("SELECT * FROM Produto where Nome LIKE @Nome", new {Nome = nome});
+    }
+
     public async Task<Produto?> Get(int id)
     {
         return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produto WHERE Id = @Id", new { Id = id });
     }
 
-    public async Task <Produto?> Get(string email)
+    public async Task <Produto?> Get(string nome)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produtos WHERE email = @Email", new { Email = email });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produto == @Nome", new { Nome = nome });
     }
 
     public async Task Add(Produto entity)
     {
         Console.WriteLine("Tentou passar pelo banco de dados");
-		var query = @"INSERT INTO Produto (Id, Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoProduto) 
-                    VALUES (@Id, @Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoProduto)";
+		var query = @"INSERT INTO Produto (Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoProduto) 
+                    VALUES (@Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoProduto)";
+        
+        int tipoprod = entity.TipoProduto;
+        int unidadecadastro = entity.UnidadeCadastro;
+
+
         var parameters = new Dictionary<string, object>
         {
-            { "Id", entity.Id },
             { "Nome", entity.Nome },
             { "Descricao", entity.Descricao },
             { "TemperaturaPlantio", entity.TemperaturaPlantio },
             { "DiasColheita", entity.DiasColheita },
-            { "UnidadeCadastro", entity.UnidadeCadastro.Id }, // Certifique-se de passar o Id da UnidadeCadastro
-            { "TipoProduto", entity.TipoProduto }
+            { "UnidadeCadastro", unidadecadastro },
+            { "TipoProduto", tipoprod}
         };
-        try
-        {
-            var resultado = await _dbConnection.ExecuteAsync(query, parameters);
-            Console.WriteLine(resultado);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.ToString());
-        }
+
+        var resultado = await _dbConnection.ExecuteAsync(query, parameters);
+        Console.WriteLine(resultado);
+
 	}
 
     public async Task Update(Produto func)
     {
-        var query = "UPDATE Ingredientes SET Nome = @Nome, UnidadeMedida = @UnidadeMedida WHERE Id = @Id";
+        var query = @"UPDATE Produto SET 
+                    Nome = @Nome, 
+                    Descricao = @Descricao, 
+                    TemperaturaPlantio = @TemperaturaPlantio ,
+                    DiasColheita = @DiasColheita,
+                    UnidadeCadastro = @UnidadeCadastro,
+                    TipoProduto = @TipoProduto
+                    WHERE Id = @Id";
+
         await _dbConnection.ExecuteAsync(query, func);
     }
 
     public async Task Delete(int id)
     {
-        await _dbConnection.ExecuteAsync("DELETE FROM Ingredientes WHERE Id = @Id", new { Id = id });
+        await _dbConnection.ExecuteAsync("DELETE FROM Produto WHERE Id = @Id", new { Id = id });
     }
 }
