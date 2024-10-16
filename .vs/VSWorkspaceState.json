@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
+    "\\Data",
     "\\Models",
     "\\Repositories",
     "\\Views",
     "\\Views\\Home"
   ],
-  "SelectedNode": "\\Views",
+  "SelectedNode": "\\Data\\FornecedorRepository.cs",
   "PreviewInSolutionExplorer": false
 }

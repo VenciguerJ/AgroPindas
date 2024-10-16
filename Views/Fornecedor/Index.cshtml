@@ -9,7 +9,7 @@
 
 <nav class="navbar navbar-light bg-light d-flex justify-content-between">
     <a asp-action="Create" class="btn btn-success">Novo Fornecedor</a>
-    <form class="form-inline d-flex" asp-action="Index">
+    <form class="form-inline d-flex" asp-action="Index" method="get">
         <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Pesquise o produto">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>

@@ -10,7 +10,6 @@ public class ProdutoController : Controller
     private readonly ICrudRepository<Produto> _ProdRepository;
     private readonly ISelectItems<ProdAssets> _unidadeRepository;
 
-
     public ProdutoController(ICrudRepository<Produto> p, ISelectItems<ProdAssets> u)
     {
         _ProdRepository = p;

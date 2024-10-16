@@ -1,64 +1,86 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace agropindas.Models
+namespace agropindas.Models;
+
+//Neste arquivo tem a model de produto e de lotes
+
+
+public class Produto
 {
-    public class Produto
+    public int Id { get; set; }
+
+    [Required(ErrorMessage = "Campo Obrigatório")]
+    [MaxLength(45)]
+    public string Nome { get; set; }
+
+    [StringLength(90)]
+    public string Descricao { get; set; }
+
+    [Required(ErrorMessage = "Campo Obrigatório")]
+    public int TemperaturaPlantio { get; set; }
+
+    [Required(ErrorMessage = "Campo Obrigatório")]
+    public int DiasColheita { get; set; }
+
+    [Required(ErrorMessage = "Campo Obrigatório")]
+    public int UnidadeCadastro { get; set; }
+    public ProdAssets? OUnidadeCadastro { get; set; }
+
+    [Required(ErrorMessage = "Campo Obrigatório")]
+    public int TipoProduto { get; set; }
+    public ProdAssets? OTipoProduto { get; set; }
+
+    // Função Debugger
+    public void Debugger()
     {
-        public int Id { get; set; }
+        Console.WriteLine("Debugging Produto:");
+        Console.WriteLine($"Id: {Id}");
+        Console.WriteLine($"Nome: {Nome}");
+        Console.WriteLine($"Descrição: {Descricao}");
+        Console.WriteLine($"Temperatura de Plantio: {TemperaturaPlantio}");
+        Console.WriteLine($"Dias para Colheita: {DiasColheita}");
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [MaxLength(45)]
-        public string Nome { get; set; }
-
-        [StringLength(90)]
-        public string Descricao { get; set; }
-
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        public int TemperaturaPlantio { get; set; }
-
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        public int DiasColheita { get; set; }
-
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        public int UnidadeCadastro { get; set; }
-        public ProdAssets? OUnidadeCadastro { get; set; }
-
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        public int TipoProduto { get; set; }
-        public ProdAssets? OTipoProduto { get; set; }
-
-        // Função Debugger
-        public void Debugger()
+        if (OUnidadeCadastro != null)
         {
-            Console.WriteLine("Debugging Produto:");
-            Console.WriteLine($"Id: {Id}");
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"Descrição: {Descricao}");
-            Console.WriteLine($"Temperatura de Plantio: {TemperaturaPlantio}");
-            Console.WriteLine($"Dias para Colheita: {DiasColheita}");
+            Console.WriteLine("Unidade de Cadastro:");
+            Console.WriteLine($"   Id: {OUnidadeCadastro.Id}");
+            Console.WriteLine($"   Nome: {OUnidadeCadastro.Nome}");
+        }
+        else
+        {
+            Console.WriteLine("Unidade de Cadastro: Nulo");
+        }
 
-            if (OUnidadeCadastro != null)
-            {
-                Console.WriteLine("Unidade de Cadastro:");
-                Console.WriteLine($"   Id: {OUnidadeCadastro.Id}");
-                Console.WriteLine($"   Nome: {OUnidadeCadastro.Nome}");
-            }
-            else
-            {
-                Console.WriteLine("Unidade de Cadastro: Nulo");
-            }
-
-            if (OTipoProduto != null)
-            {
-                Console.WriteLine("Tipo de Produto:");
-                Console.WriteLine($"   Id: {OTipoProduto.Id}");
-                Console.WriteLine($"   Nome: {OTipoProduto.Nome}");
-            }
-            else
-            {
-                Console.WriteLine("Tipo de Produto: Nulo");
-            }
+        if (OTipoProduto != null)
+        {
+            Console.WriteLine("Tipo de Produto:");
+            Console.WriteLine($"   Id: {OTipoProduto.Id}");
+            Console.WriteLine($"   Nome: {OTipoProduto.Nome}");
+        }
+        else
+        {
+            Console.WriteLine("Tipo de Produto: Nulo");
         }
     }
+}
+
+
+
+public class LoteCompra
+{
+    // Tabela "Estoque" do banco
+    [Required(ErrorMessage = "Campo obrigatório")]
+    public int id_estoque {  get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório")]
+    public int id_produto { get; set; }
+
+    public Produto? Produto { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório")]
+    public int quantidade_entrada { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório")]
+    public int quantidade_saida { get; set; }
 }

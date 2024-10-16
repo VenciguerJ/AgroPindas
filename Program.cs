@@ -6,10 +6,10 @@ using System.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 
-//string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
-//                        TrustServerCertificate=True;";
+string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
+                        TrustServerCertificate=True;";
 
-string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PINDUCAS_farm;Integrated Security=True;TrustServerCertificate=True;";
+//string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PINDUCAS_farm;Integrated Security=True;TrustServerCertificate=True;";
 
 
 // Add services to the container.

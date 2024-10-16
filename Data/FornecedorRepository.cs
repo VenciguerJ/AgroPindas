@@ -18,7 +18,7 @@ public class FornecedorRepository : ICrudRepository<Fornecedor>
     }
     public async Task<IEnumerable<Fornecedor>> GetAll(string nome)
     {
-        return await _dbConnection.QueryAsync<Fornecedor>("SELECT * FROM Fornecedor  WHERE RazaoSocial LIKE @Nome OR CNPJ LIKE @Nome", new { Nome = nome,});
+        return await _dbConnection.QueryAsync<Fornecedor>("SELECT * FROM Fornecedor  WHERE RazaoSocial LIKE @Nome OR CNPJ LIKE @Nome",new { Nome = "%" + nome + "%" });
     }
     public async Task<Fornecedor?> Get(int num)
     {

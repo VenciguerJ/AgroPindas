@@ -47,17 +47,17 @@ namespace agropindas.Controllers;
         }
 
     [HttpGet]
-    public async Task<IActionResult> Edit(Fornecedor f)
+    public async Task<IActionResult> Edit(int id)
     {
-        var fonecedorDB = await _crudRepository.Get(f.Id);
+        var fonecedorDB = await _crudRepository.Get(id);
         return View(fonecedorDB); 
     }
     [HttpPost]
-    public async Task<IActionResult> EditSql(Fornecedor f)
+    public async Task<IActionResult> Edit(Fornecedor f)
     {
         try
         {
-            var funcIdCorreto = await _crudRepository.Get(f.CNPJ); // pegando o id correto pois na mudança de rotas ele perde o ID, no formulário não podemos manipular o id, por isso id aqui é 0
+            var funcIdCorreto = await _crudRepository.Get(f.CNPJ); 
             f.Id = funcIdCorreto.Id;
             await _crudRepository.Update(f);
             TempData["SuccessMessage"] = "Fornecedor alterado com sucesso!";
