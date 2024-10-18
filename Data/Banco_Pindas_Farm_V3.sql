@@ -94,12 +94,12 @@ DROP TABLE IF EXISTS Lote;
 
 CREATE TABLE Lote(
 	IdCompra int  not null, --fk da tabela de compra
-	id_produto int not null,
-	quantidade_entrada int null,
+	IdProduto int not null,
+	QauntidadeLote int null,
 	quantidade_saida int not null,
 	
 	constraint fk_IdCompra foreign key (IdCompra) references Compra(Id),
-	constraint fk_estoque_produto foreign key (id_produto) references Produto(Id)
+	constraint fk_estoque_produto foreign key (IdProduto) references Produto(Id)
 );
 
 

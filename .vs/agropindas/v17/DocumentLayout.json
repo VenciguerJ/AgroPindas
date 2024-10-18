@@ -3,20 +3,48 @@
   "WorkspaceRootPath": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\banco_pindas_farm_v3.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\banco_pindas_farm_v3.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\lote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\lote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\loterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\loterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\controllers\\fornecedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:controllers\\fornecedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\banco_pindas_farm_v3.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\banco_pindas_farm_v3.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,52 +59,130 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Produto.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Produto.cs",
-              "RelativeDocumentMoniker": "Models\\Produto.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Produto.cs",
-              "RelativeToolTip": "Models\\Produto.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAIwEEAAAABAAAAAAAAAA==",
+              "Title": "Banco_Pindas_Farm_V3.sql ",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\Banco_Pindas_Farm_V3.sql",
+              "RelativeDocumentMoniker": "Data\\Banco_Pindas_Farm_V3.sql",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\Banco_Pindas_Farm_V3.sql",
+              "RelativeToolTip": "Data\\Banco_Pindas_Farm_V3.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-17T23:39:51.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Lote.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Lote.cs",
+              "RelativeDocumentMoniker": "Models\\Lote.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Lote.cs",
+              "RelativeToolTip": "Models\\Lote.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T20:08:04.407Z",
+              "WhenOpened": "2024-10-17T23:35:27.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "LoteRepository.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\LoteRepository.cs",
+              "RelativeDocumentMoniker": "Data\\LoteRepository.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\LoteRepository.cs",
+              "RelativeToolTip": "Data\\LoteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T23:32:51.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\IRepository.cs",
+              "RelativeDocumentMoniker": "Data\\IRepository.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\IRepository.cs",
+              "RelativeToolTip": "Data\\IRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAkwBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T23:31:49.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProdutoRepository.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\ProdutoRepository.cs",
+              "RelativeDocumentMoniker": "Data\\ProdutoRepository.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\ProdutoRepository.cs",
+              "RelativeToolTip": "Data\\ProdutoRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T23:31:10.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Funcionario.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Funcionario.cs",
+              "RelativeDocumentMoniker": "Models\\Funcionario.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Funcionario.cs",
+              "RelativeToolTip": "Models\\Funcionario.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T23:22:06.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwB0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T23:06:47.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomePage.cshtml",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Home\\HomePage.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\HomePage.cshtml",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Home\\HomePage.cshtml",
+              "RelativeToolTip": "Views\\Home\\HomePage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-17T23:08:37.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T19:00:38.501Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FornecedorController.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\FornecedorController.cs",
-              "RelativeDocumentMoniker": "Controllers\\FornecedorController.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\FornecedorController.cs",
-              "RelativeToolTip": "Controllers\\FornecedorController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAswCMAAAApAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "LoginRepository.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\LoginRepository.cs",
+              "RelativeDocumentMoniker": "Data\\LoginRepository.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\LoginRepository.cs",
+              "RelativeToolTip": "Data\\LoginRepository.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAwCkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T23:38:42.646Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProdutoController.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\ProdutoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProdutoController.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\ProdutoController.cs",
-              "RelativeToolTip": "Controllers\\ProdutoController.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAgwGsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T23:35:45.207Z",
+              "WhenOpened": "2024-10-17T23:14:20.582Z",
               "EditorCaption": ""
             }
           ]

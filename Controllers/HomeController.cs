@@ -22,7 +22,6 @@ public class HomeController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        Console.WriteLine("Passou por aqui");
         return View();
     }
 
