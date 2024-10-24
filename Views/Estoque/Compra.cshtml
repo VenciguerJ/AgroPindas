@@ -1,0 +1,62 @@
+﻿@model CompraViewModel
+@{
+    ViewData["Title"] = "Criar Fornecedor";
+}
+
+<form>
+    <div class="row mb-3">
+        <!-- Coluna 1: Fornecedor -->
+        <div class="col-md-6">
+            <label for="fornecedor" class="form-label">Selecione o fornecedor</label>
+            <div class="input-group">
+                <select asp-for="@Model.FornecedorCompra.Id">
+                    <option value="">Selecione...</option>
+                    @foreach (var fornecedor in Model.Fornecedores)
+                    {
+                        <option value="fornecedor.Id">@fornecedor.RazaoSocial</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <!-- Coluna 2: Valor Total -->
+        <div class="col-md-6">
+            <label for="valorTotal" class="form-label">Valor Total</label>
+            <input type="number" class="form-control" id="valorTotal" placeholder="0,00" step="0.01" readonly>
+        </div>
+    </div>
+
+    <!-- Grid de Produtos -->
+    <h4 class="mt-4">Produtos</h4>
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Preço Unitário</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <!-- Linha de exemplo -->
+            <tr>
+                <td><input type="text" name="Nome" placeholder="Digite o nome do produto"/ style="width: 100%"></td>
+                <td><input type="number" class="form-control" value="1"></td>
+                <td><input type="number" class="form-control" value="10.00" readonly></td>
+                <td>R$ 10,00</td>
+                <td>
+                    <button class="btn btn-danger btn-sm">Remover</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Botões de ação -->
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-primary">Adicionar Produto</button>
+        <button type="submit" class="btn btn-success ms-2">Finalizar Compra</button>
+    </div>
+</form>

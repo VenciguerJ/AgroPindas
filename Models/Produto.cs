@@ -3,9 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace agropindas.Models;
 
-//Neste arquivo tem a model de produto e de lotes
-
-
 public class Produto
 {
     public int Id { get; set; }
@@ -30,6 +27,8 @@ public class Produto
     [Required(ErrorMessage = "Campo Obrigatório")]
     public int TipoProduto { get; set; }
     public ProdAssets? OTipoProduto { get; set; }
+
+    public decimal ValorProduto { get; set; }
 
     // Função Debugger
     public void Debugger()
@@ -66,21 +65,3 @@ public class Produto
 }
 
 
-
-public class LoteCompra
-{
-    // Tabela "Estoque" do banco
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public int id_estoque {  get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public int id_produto { get; set; }
-
-    public Produto? Produto { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public int quantidade_entrada { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public int quantidade_saida { get; set; }
-}

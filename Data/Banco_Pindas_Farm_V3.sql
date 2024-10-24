@@ -33,8 +33,8 @@ CREATE TABLE Funcionarios(
 	constraint fk_funcionarios_cargo foreign key (id_cargo) references Cargos(id_cargo)
 );
 
-INSERT INTO Funcionarios(cpf,senha,nome,telefone,email,id_cargo,superior,data_nascimento)
-VALUES ('47441293820','123','Jean','11953398867','jeanpedrosilva24@gmail.com',1,0,getdate());
+INSERT INTO Funcionarios(cpf,senha,nome,telefone,email,id_cargo,data_nascimento)
+VALUES ('47441293820','123','Jean','11953398867','jeanpedrosilva24@gmail.com',1,getdate());
 
 DROP TABLE IF EXISTS Fornecedor;
 
@@ -53,6 +53,7 @@ CREATE TABLE Compra(
 	Id int identity not null primary key,
 	IdFornecedor int not null,
 	ValorTotal money not null,
+	DataCompra Date not null,
 	constraint fk_fornecedor foreign key (IdFornecedor) references Fornecedor(Id)
 );
 
@@ -86,6 +87,7 @@ CREATE TABLE Produto(
 	DiasColheita int not null,
 	UnidadeCadastro int not null,
 	TipoProduto int not null,
+	ValorProduto money not null,
 	constraint fk_unidade_cadastro foreign key (UnidadeCadastro) references UnidadeCadastro(Id),
 	constraint fk_tipo_produto foreign key (TipoProduto) references TipoProduto(Id)
 );
@@ -96,45 +98,41 @@ CREATE TABLE Lote(
 	IdCompra int  not null, --fk da tabela de compra
 	IdProduto int not null,
 	QauntidadeLote int null,
-	quantidade_saida int not null,
+	QuantidadeSaida int not null,
 	
 	constraint fk_IdCompra foreign key (IdCompra) references Compra(Id),
 	constraint fk_estoque_produto foreign key (IdProduto) references Produto(Id)
 );
 
-
-
 DROP TABLE IF EXISTS Suporte_Calhas;
 
 CREATE TABLE Suporte_Calhas(
-	id_suporte int identity not null primary key,
-	capacidade_calhas int not null,
-	andares int not null,
+	Id int identity not null primary key,
+	CapacidadeMudas int not null,
 	ocupada bit not null
 );
 
-DROP TABLE IF EXISTS Calhas;
+DROP TABLE IF EXISTS Suporte_Calhas_Fertilizantes;
 
-CREATE TABLE Calhas(
-	id_calha int identity not null primary key,
-	quantidade_suportes int not null,
-	ocupada bit not null,
-	id_suporte int not null
-	constraint fk_calhas_suporte foreign key (id_suporte) references Suporte_Calhas(id_suporte)
+CREATE TABLE Suporte_Calhas_Fertilizantes(
+	IdSuporte int not null,
+	IdProduto int not null,
+	QtdUtilizada float not null
+
+	constraint Id_suporteCalha foreign key (IdSuporte) references Suporte_Calhas(Id),
+	constraint Id_ProdutoCalha foreign key (IdProduto) references Produto(Id)
 );
 
 DROP TABLE IF EXISTS Producao;
 
 CREATE TABLE Producao(
-	id_producao int identity not null primary key,
-	id_estoque int not null,
-	quantidade_inicial int not null,
-	quantidade_produzido int not null,
-	id_calha int not null,
-	constraint fk_producao_estoque foreign key (id_estoque) references Estoque(id_estoque),
-	constraint fk_producao_calha foreign key (id_calha) references Calhas(id_calha)
+	Id int identity not null primary key,
+	IdLoteUsasdo int not null,
+	IdProdutoProduzido int not null,
+	QuantidadeProduzido int not null,
+	IdCalha int not null,
+	constraint fk_producao_calha foreign key (IdCalha) references Suporte_Calhas(Id)
 );
-
 
 DROP TABLE IF EXISTS Estoque_Produto;
 
@@ -143,7 +141,7 @@ CREATE TABLE Estoque_Produto(
 	id_producao int not null,
 	quantidade_inicial int not null,
 	quantidade_vendido int not null
-	constraint fk_estoquep_producao foreign key (id_producao) references Producao(id_producao)
+	constraint fk_estoquep_producao foreign key (id_producao) references Producao(Id)
 );
 
 

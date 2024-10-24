@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 
 namespace agropindas.Repositories;
-public class LoteRepository : ICrudRepository<Lote>
+public class LoteRepository 
 {
     private readonly IDbConnection _dbConnection;
 
@@ -14,60 +14,45 @@ public class LoteRepository : ICrudRepository<Lote>
         _dbConnection = dbConnection;
     }
 
-    public async Task<IEnumerable<Produto>> GetAll()
+    public async Task<IEnumerable<Lote>> GetAll()
     {
-        return await _dbConnection.QueryAsync<Produto>("SELECT * FROM Produto");
+        return await _dbConnection.QueryAsync<Lote>("SELECT * FROM Lote");
     }
 
-    public async Task<IEnumerable<Produto>>GetAll(string nome)
+    public async Task<IEnumerable<Lote>>GetAll(string nome)
     {
-        return await _dbConnection.QueryAsync<Produto>("SELECT * FROM Produto where Nome LIKE @Nome", new {Nome = nome});
+        return await _dbConnection.QueryAsync<Lote>("SELECT * FROM Lote where Nome LIKE @Nome", new {Nome = nome});
     }
 
-    public async Task<Produto?> Get(int id)
+    public async Task<Lote?> Get(int id)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produto WHERE Id = @Id", new { Id = id });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Lote>("SELECT * FROM Lote WHERE Id = @Id", new { Id = id });
     }
 
-    public async Task <Produto?> Get(string nome)
+    public async Task <Lote?> Get(string nome)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produto == @Nome", new { Nome = nome });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Lote>("SELECT * FROM Lote == @Nome", new { Nome = nome });
     }
 
-    public async Task Add(Produto entity)
+    public async Task Add(Lote entity)
     {
-        Console.WriteLine("Tentou passar pelo banco de dados");
-		var query = @"INSERT INTO Produto (Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoProduto) 
-                    VALUES (@Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoProduto)";
-        
-        int tipoprod = entity.TipoProduto;
-        int unidadecadastro = entity.UnidadeCadastro;
+		var query = @"INSERT INTO Lote (Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoLote) 
+                    VALUES (@Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoLote)";
 
-
-        var parameters = new Dictionary<string, object>
-        {
-            { "Nome", entity.Nome },
-            { "Descricao", entity.Descricao },
-            { "TemperaturaPlantio", entity.TemperaturaPlantio },
-            { "DiasColheita", entity.DiasColheita },
-            { "UnidadeCadastro", unidadecadastro },
-            { "TipoProduto", tipoprod}
-        };
-
-        var resultado = await _dbConnection.ExecuteAsync(query, parameters);
+        var resultado = await _dbConnection.ExecuteAsync(query, entity);
         Console.WriteLine(resultado);
 
 	}
 
-    public async Task Update(Produto func)
+    public async Task Update(Lote func)
     {
-        var query = @"UPDATE Produto SET 
+        var query = @"UPDATE Lote SET 
                     Nome = @Nome, 
                     Descricao = @Descricao, 
                     TemperaturaPlantio = @TemperaturaPlantio ,
                     DiasColheita = @DiasColheita,
                     UnidadeCadastro = @UnidadeCadastro,
-                    TipoProduto = @TipoProduto
+                    TipoLote = @TipoLote
                     WHERE Id = @Id";
 
         await _dbConnection.ExecuteAsync(query, func);
@@ -75,6 +60,6 @@ public class LoteRepository : ICrudRepository<Lote>
 
     public async Task Delete(int id)
     {
-        await _dbConnection.ExecuteAsync("DELETE FROM Produto WHERE Id = @Id", new { Id = id });
+        await _dbConnection.ExecuteAsync("DELETE FROM Lote WHERE Id = @Id", new { Id = id });
     }
 }

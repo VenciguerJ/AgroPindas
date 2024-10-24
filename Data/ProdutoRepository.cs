@@ -37,8 +37,8 @@ public class ProdutoRepository : ICrudRepository<Produto>
     public async Task Add(Produto entity)
     {
         Console.WriteLine("Tentou passar pelo banco de dados");
-		var query = @"INSERT INTO Produto (Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoProduto) 
-                    VALUES (@Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoProduto)";
+		var query = @"INSERT INTO Produto (Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoProduto, ValorProduto) 
+                    VALUES (@Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoProduto, @ValorProduto)";
         
         int tipoprod = entity.TipoProduto;
         int unidadecadastro = entity.UnidadeCadastro;
@@ -51,7 +51,8 @@ public class ProdutoRepository : ICrudRepository<Produto>
             { "TemperaturaPlantio", entity.TemperaturaPlantio },
             { "DiasColheita", entity.DiasColheita },
             { "UnidadeCadastro", unidadecadastro },
-            { "TipoProduto", tipoprod}
+            { "TipoProduto", tipoprod},
+            {"ValorProduto", entity.ValorProduto }
         };
 
         var resultado = await _dbConnection.ExecuteAsync(query, parameters);
