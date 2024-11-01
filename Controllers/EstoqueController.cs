@@ -31,5 +31,19 @@ namespace agropindas.Controllers
         }
 
 
+        //AJAX FUNCTION
+        [HttpGet]
+        public async Task<IActionResult> GetProduto(int id)
+        {
+            var prod = await _produtos.Get(id);
+
+            if (prod == null)
+            {
+                return NotFound();
+            }
+
+            return Json(new { preco = prod.ValorProduto }); // Encapsula o valor em um objeto
+        }
+
     }
 }

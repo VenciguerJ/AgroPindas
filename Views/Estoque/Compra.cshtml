@@ -1,16 +1,17 @@
 ﻿@model CompraViewModel
 @{
     ViewData["Title"] = "Criar Fornecedor";
+
 }
 
-<form>
+<form asp-action="Create" method="get">
     <div class="row mb-3">
         <!-- Coluna 1: Fornecedor -->
         <div class="col-md-6">
             <label for="fornecedor" class="form-label">Selecione o fornecedor</label>
             <div class="input-group">
-                <select asp-for="@Model.FornecedorCompra.Id">
-                    <option value="">Selecione...</option>
+                <select asp-for="@Model.FornecedorCompra.Id" class="form-control">
+                    <option value="0">Selecione...</option>
                     @foreach (var fornecedor in Model.Fornecedores)
                     {
                         <option value="fornecedor.Id">@fornecedor.RazaoSocial</option>
@@ -22,7 +23,7 @@
         <!-- Coluna 2: Valor Total -->
         <div class="col-md-6">
             <label for="valorTotal" class="form-label">Valor Total</label>
-            <input type="number" class="form-control" id="valorTotal" placeholder="0,00" step="0.01" readonly>
+            <input type="number" class="form-control" asp-for="@Model.Compra.ValorTotal" id="js-valor-total" step="0.01" value="00.00" readonly>
         </div>
     </div>
 
@@ -38,25 +39,39 @@
                 <th scope="col">Ações</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="table-js-product">
 
 
             <!-- Linha de exemplo -->
-            <tr>
-                <td><input type="text" name="Nome" placeholder="Digite o nome do produto"/ style="width: 100%"></td>
-                <td><input type="number" class="form-control" value="1"></td>
-                <td><input type="number" class="form-control" value="10.00" readonly></td>
-                <td>R$ 10,00</td>
+            <tr class="prod-row">
+                <td>
+                    <select asp-for="@Model.FornecedorCompra.Id" class="form-control select-produto">
+                        <!-- Classe 'select-produto' -->
+                        <option value="0">Selecione...</option>
+                        @foreach (var produto in Model.Produtos)
+                        {
+                            <option value="@produto.Id">@produto.Nome</option>
+                        }
+                    </select>
+                </td>
+                <td><input type="number" class="form-control input-quantidade" value="1"></td>
+                <td><input type="number" class="form-control input-preco" readonly></td> <!-- input-preco -->
+                <td class="subtotal">0.00</td> <!-- subtotal -->
                 <td>
                     <button class="btn btn-danger btn-sm">Remover</button>
                 </td>
+
             </tr>
+
         </tbody>
     </table>
 
     <!-- Botões de ação -->
     <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-primary">Adicionar Produto</button>
+        <button type="button" class="btn btn-primary" id="adicionarProduto">Adicionar Produto</button>
         <button type="submit" class="btn btn-success ms-2">Finalizar Compra</button>
     </div>
 </form>
+
+
+<script src="~/js/compra.js"></script>
