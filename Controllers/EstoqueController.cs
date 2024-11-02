@@ -26,7 +26,7 @@ namespace agropindas.Controllers
         {
             var fornecedoresView = await _fornecedor.GetAll();
             var produtosView = await _produtos.GetAll();
-            CompraViewModel model = new CompraViewModel(fornecedoresView, produtosView);
+            CompraViewModel model = new CompraViewModel(fornecedoresView, produtosView, new List<Lote>());
             return View(model);
         }
 

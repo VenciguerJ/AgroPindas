@@ -16,5 +16,5 @@ public class Lote
             }
         } 
     }
-    public double QuantidadeSaída { get; set; }
+    public double? QuantidadeSaída { get; set; }
 }

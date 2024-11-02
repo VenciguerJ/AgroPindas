@@ -1,9 +1,8 @@
 ﻿@model CompraViewModel
 @{
     ViewData["Title"] = "Criar Fornecedor";
-
+    int contador;
 }
-
 <form asp-action="Create" method="get">
     <div class="row mb-3">
         <!-- Coluna 1: Fornecedor -->
@@ -23,7 +22,7 @@
         <!-- Coluna 2: Valor Total -->
         <div class="col-md-6">
             <label for="valorTotal" class="form-label">Valor Total</label>
-            <input type="number" class="form-control" asp-for="@Model.Compra.ValorTotal" id="js-valor-total" step="0.01" value="00.00" readonly>
+            <input type="number" class="form-control" asp-for="@Model.Compra.ValorTotal" id="js-valor-total" value="00.00" readonly>
         </div>
     </div>
 
@@ -40,13 +39,9 @@
             </tr>
         </thead>
         <tbody id="table-js-product">
-
-
-            <!-- Linha de exemplo -->
-            <tr class="prod-row">
+            <tr class="js-row">
                 <td>
-                    <select asp-for="@Model.FornecedorCompra.Id" class="form-control select-produto">
-                        <!-- Classe 'select-produto' -->
+                    <select name="Lotes[0].IdProduto" class="form-control select-produto">
                         <option value="0">Selecione...</option>
                         @foreach (var produto in Model.Produtos)
                         {
@@ -54,15 +49,17 @@
                         }
                     </select>
                 </td>
-                <td><input type="number" class="form-control input-quantidade" value="1"></td>
-                <td><input type="number" class="form-control input-preco" readonly></td> <!-- input-preco -->
-                <td class="subtotal">0.00</td> <!-- subtotal -->
                 <td>
-                    <button class="btn btn-danger btn-sm">Remover</button>
+                    <input type="number" name="Lotes[0].QuantidadeLote" class="form-control input-quantidade" value="1" />
                 </td>
-
+                <td>
+                    <input type="number" name="Lotes[0].PrecoUnitario" class="form-control input-preco" readonly />
+                </td>
+                <td class="subtotal">00.00</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm js-remove-btn" onclick="removerProduto(this)">Remover</button>
+                </td>
             </tr>
-
         </tbody>
     </table>
 
@@ -73,5 +70,16 @@
     </div>
 </form>
 
-
 <script src="~/js/compra.js"></script>
+<script>
+    function removerProduto(button) {
+        const row = button.closest("tr");
+        const tableBody = document.getElementById("table-js-product");
+
+        if (tableBody.rows.length > 1) {
+            row.remove();
+        } else {
+            alert("É necessário ter pelo menos um produto.");
+        }
+    }
+</script>

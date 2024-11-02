@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const table = document.getElementById('table-js-product');
-    
+
     // Função para buscar o preço do produto via AJAX
     function buscarPrecoProduto(produtoId, callback) {
         fetch(`/Estoque/GetProduto?id=${produtoId}`)  // Corrigido para usar o produtoId dinamicamente
@@ -31,20 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     atualizarSubtotal(select.closest('tr'));
                 });
             } else {
-                inputPreco.value = "0.00";
+                inputPreco.value = "00.00";
                 atualizarSubtotal(select.closest('tr'));
             }
         }
-        atualizaValorTotal();
-    });
-
-    table.addEventListener('change', function (event) {
         if (event.target.classList.contains('input-quantidade')) {
             atualizarSubtotal(event.target.closest('tr'));
         }
-        atualizaValorTotal();
     });
- 
+
+    //table.addEventListener('change', function (event) {
+    //});
+
     // Função para atualizar o subtotal da linha
     function atualizarSubtotal(row) {
         const quantidade = parseFloat(row.querySelector('.input-quantidade').value);
@@ -52,35 +49,50 @@ document.addEventListener('DOMContentLoaded', function () {
         const subtotal = quantidade * preco;
         subtotal.toFixed(2)
         row.querySelector('.subtotal').textContent = subtotal;
+        atualizaValorTotal();
     }
 
+    function AddToValorTotal(valor) {
+        const $valorTotal = document.getElementById('js-valor-total');
+        let valorTotal = parseFloat($valorTotal.value);
+        if (valorTotal == 0) {
+            valorTotal = parseFloat(valor);
+        }
+        else {
+            valorTotal += parseFloat(valor);
+        }
+        $valorTotal.value = parseFloat(valorTotal.toFixed(2));
+    }
     function atualizaValorTotal() {
         const $subtotal = table.querySelectorAll(".subtotal");
+        const $valorTotal = document.getElementById('js-valor-total');
+        $valorTotal.value = 0;
         for (let i = 0; i < $subtotal.length; i++) {
-            console.log($subtotal[i].textContent);
             AddToValorTotal(parseFloat($subtotal[i].textContent));
         }
     }
 
-    function AddToValorTotal(valor) {
-        const valorTotal = document.getElementById('js-valor-total');
-        valorTotal.value = parseFloat(valorTotal.Value);
-        if (valorTotal.Value == 0) {
-            valorTotal.value = valor;
-        }
-        else {
-            valorTotal.value += parseFloat(valor);
-        }
-    }
-
     //--------------------------------------------
-    //Adicionar produto na tela 
-    var $addProd = document.getElementById("adicionarProduto");
-    $addProd.addEventListener('click', function () {
-        const template = table.innerHTML;
-        var tr = document.createElement("tr");
-        tr.innerHTML = template;
+    //Adicionar produto na tela
 
-        table.appendChild(tr);
-    })
+    var $addProd = document.getElementById("adicionarProduto");
+    var contador = table.querySelectorAll(".js-row").length;
+    $addProd.addEventListener("click", function () {
+        const newRow = table.rows[0].cloneNode(true);
+
+        // Atualizar os índices dos campos
+        const index = table.rows.length;
+        newRow.querySelectorAll("input, select").forEach((input) => {
+            const name = input.getAttribute("name");
+            if (name) {
+                input.setAttribute("name", name.replace(/\[0\]/, `[${index}]`));
+            }
+            
+            input.value = ""; // Limpar valores dos novos campos
+        });
+
+        newRow.querySelector(".input-quantidade").value = 1;
+
+        table.appendChild(newRow);
+    });
 });

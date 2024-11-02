@@ -7,12 +7,15 @@ public class CompraViewModel
 
 
     public Fornecedor? FornecedorCompra { get; set; }
-    public Produto? ProdutoCompra { get; set; }
+    public List<Produto>? ProdutosCompra { get; set; }
 
-    public CompraViewModel(IEnumerable<Fornecedor> f, IEnumerable<Produto> p)
+    public List<Lote>? Lotes { get; set; }
+
+    public CompraViewModel(IEnumerable<Fornecedor> f, IEnumerable<Produto> p, List<Lote> lotes)
     {
         Produtos = p;
         Fornecedores = f;
+        Lotes = lotes;
     }
 }
 
