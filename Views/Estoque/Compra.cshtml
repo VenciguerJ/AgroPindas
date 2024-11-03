@@ -3,17 +3,17 @@
     ViewData["Title"] = "Criar Fornecedor";
     int contador;
 }
-<form asp-action="Create" method="get">
+<form asp-action="FinalizarCompra" method="post">
     <div class="row mb-3">
         <!-- Coluna 1: Fornecedor -->
         <div class="col-md-6">
             <label for="fornecedor" class="form-label">Selecione o fornecedor</label>
             <div class="input-group">
-                <select asp-for="@Model.FornecedorCompra.Id" class="form-control">
+                <select asp-for="@Model.Compra.IdFornecedor" class="form-control">
                     <option value="0">Selecione...</option>
                     @foreach (var fornecedor in Model.Fornecedores)
                     {
-                        <option value="fornecedor.Id">@fornecedor.RazaoSocial</option>
+                        <option value="@fornecedor.Id">@fornecedor.RazaoSocial</option>
                     }
                 </select>
             </div>
@@ -53,7 +53,7 @@
                     <input type="number" name="Lotes[0].QuantidadeLote" class="form-control input-quantidade" value="1" />
                 </td>
                 <td>
-                    <input type="number" name="Lotes[0].PrecoUnitario" class="form-control input-preco" readonly />
+                    <input type="number" class="form-control input-preco" readonly />
                 </td>
                 <td class="subtotal">00.00</td>
                 <td>

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 
 namespace agropindas.Repositories;
-public class LoteRepository 
+public class LoteRepository : ICrudRepository<Lote>
 {
     private readonly IDbConnection _dbConnection;
 
@@ -36,8 +36,8 @@ public class LoteRepository
 
     public async Task Add(Lote entity)
     {
-		var query = @"INSERT INTO Lote (Nome, Descricao, TemperaturaPlantio, DiasColheita, UnidadeCadastro, TipoLote) 
-                    VALUES (@Nome, @Descricao, @TemperaturaPlantio, @DiasColheita, @UnidadeCadastro, @TipoLote)";
+		var query = @"INSERT INTO Lote (IdProduto, QuantidadeLote QuantidadeSaida) 
+                    VALUES (@IdProduto, @QuantidadeLote, @QuantidadeSaida)";
 
         var resultado = await _dbConnection.ExecuteAsync(query, entity);
         Console.WriteLine(resultado);
