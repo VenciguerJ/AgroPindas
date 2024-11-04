@@ -31,7 +31,7 @@ public class ProdutoRepository : ICrudRepository<Produto>
 
     public async Task <Produto?> Get(string nome)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produto == @Nome", new { Nome = nome });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Produto>("SELECT * FROM Produto where Nome = @Nome", new { Nome = nome });
     }
 
     public async Task Add(Produto entity)

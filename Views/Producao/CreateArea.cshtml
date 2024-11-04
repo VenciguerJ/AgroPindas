@@ -1,0 +1,46 @@
+﻿@model SuporteCalha
+@{
+    ViewData["Title"] = "Criar Calha";
+    var errorMessage = TempData["ErrorMessage"];
+}
+
+<div class="container mt-5">
+    <form asp-action="CreateArea" method="post" class="shadow p-5 rounded d-flex align-content-center flex-column">
+
+        <!-- Título do Formulário -->
+        <div class="text-center mb-5">
+            <i class="fa-solid fa-seedling text-success" style="font-size: 5vh"></i>
+            <h2 class="fw-bold">Cadastro de Área Produtiva</h2>
+            <p class="text-muted">Preencha as informações abaixo</p>
+        </div>
+
+        <!-- Campo de Capacidade -->
+        <div class=" d-flex justify-content-center text-center">
+            <div class="col-md-6 mb-4">
+                <label for="formnome" class="form-label">Capacidade</label>
+                <input type="number" id="formnome" class="form-control form-control-lg" asp-for="CapacidadeMudas" placeholder="Informe a capacidade" />
+                <span asp-validation-for="CapacidadeMudas" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Radio Buttons de Ocupação -->
+        <div class="mb-4 text-center ">
+            <h5 class="mb-3">Área Ocupada?</h5>
+            <div class="form-check form-check-inline">
+                <input type="radio" value="true" id="Optiontrue" asp-for="ocupada" class="form-check-input" />
+                <label for="Optiontrue" class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" value="false" id="Optionfalse" asp-for="ocupada" class="form-check-input" />
+                <label for="Optionfalse" class="form-check-label">Não</label>
+            </div>
+            <span asp-validation-for="ocupada" class="text-danger"></span>
+        </div>
+
+        <!-- Botão de Envio -->
+        <div class="d-flex justify-content-center pt-4">
+            <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+        </div>
+
+    </form>
+</div>

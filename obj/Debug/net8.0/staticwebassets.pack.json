@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\Content\\Icon.ico"
     },
     {
+      "Id": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\IconSuporte.jpg",
+      "PackagePath": "staticwebassets\\Content\\IconSuporte.jpg"
+    },
+    {
       "Id": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\Login-image.jpg",
       "PackagePath": "staticwebassets\\Content\\Login-image.jpg"
     },

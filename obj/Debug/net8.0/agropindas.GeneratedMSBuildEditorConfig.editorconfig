@@ -30,6 +30,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxDb21wcmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,8 +62,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xDcmVhdGUuY3NodG1s
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/CreateArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cQ3JlYXRlQXJlYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/EditArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cRWRpdEFyZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Edit.cshtml]

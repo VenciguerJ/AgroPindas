@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Produto\Create.cshtml">
+    <Content Update="Views\Producao\CreateArea.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

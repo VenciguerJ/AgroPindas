@@ -29,9 +29,12 @@ public class CompraRepositoy : ICrudRepository<Compra>
         return await _dbConnection.QueryFirstOrDefaultAsync<Compra>("SELECT * FROM Compra WHERE Id = @Id", new { Id = id });
     }
 
-    public async Task <Compra?> Get(string nome)
+    public async Task<Compra?> Get(string str)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Compra>("SELECT * FROM Compra == @Nome", new { Nome = nome });
+        // pega a ultima inserção no banco
+        string query = @" Select TOP 1 * from Compra
+                            order by Id desc;";
+        return await _dbConnection.QueryFirstOrDefaultAsync<Compra>(query);
     }
 
     public async Task Add(Compra entity)

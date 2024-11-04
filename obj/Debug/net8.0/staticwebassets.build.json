@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oDE/pgEV0Q5qRhmqnLUzvQ7agp3PKpK1Cp1kqCX9aqs=",
+  "Hash": "huik9QrnTodmzwhOx/Ax7n7o2NY0ApshcyeBIi4XmJQ=",
   "Source": "agropindas",
   "BasePath": "_content/agropindas",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\Icon.ico"
+    },
+    {
+      "Identity": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\IconSuporte.jpg",
+      "SourceId": "agropindas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\",
+      "BasePath": "_content/agropindas",
+      "RelativePath": "Content/IconSuporte.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\IconSuporte.jpg"
     },
     {
       "Identity": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\Login-image.jpg",

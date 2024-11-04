@@ -3,19 +3,20 @@
     ViewData["Title"] = "Criar Fornecedor";
     int contador;
 }
-<form asp-action="FinalizarCompra" method="post">
+<form asp-action="Compra" method="post">
     <div class="row mb-3">
         <!-- Coluna 1: Fornecedor -->
         <div class="col-md-6">
             <label for="fornecedor" class="form-label">Selecione o fornecedor</label>
             <div class="input-group">
-                <select asp-for="@Model.Compra.IdFornecedor" class="form-control">
+                <select asp-for="@Model.Compra.IdFornecedor" class="form-control" required>
                     <option value="0">Selecione...</option>
                     @foreach (var fornecedor in Model.Fornecedores)
                     {
                         <option value="@fornecedor.Id">@fornecedor.RazaoSocial</option>
                     }
                 </select>
+                <span asp-validation-for="@Model.FornecedorCompra.Id" class="text-danger"></span>
             </div>
         </div>
 
@@ -41,7 +42,7 @@
         <tbody id="table-js-product">
             <tr class="js-row">
                 <td>
-                    <select name="Lotes[0].IdProduto" class="form-control select-produto">
+                    <select name="Lotes[0].IdProduto" class="form-control select-produto" required>
                         <option value="0">Selecione...</option>
                         @foreach (var produto in Model.Produtos)
                         {
@@ -50,7 +51,7 @@
                     </select>
                 </td>
                 <td>
-                    <input type="number" name="Lotes[0].QuantidadeLote" class="form-control input-quantidade" value="1" />
+                    <input type="number" name="Lotes[0].QuantidadeLote" class="form-control input-quantidade" value="1" required/>
                 </td>
                 <td>
                     <input type="number" class="form-control input-preco" readonly />

@@ -3,36 +3,28 @@
   "WorkspaceRootPath": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\estoquerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\estoquerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\controllers\\estoquecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:controllers\\estoquecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\comprarepositoy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\comprarepositoy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\views\\producao\\editarea.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:views\\producao\\editarea.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\controllers\\producaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:controllers\\producaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\views\\estoque\\compra.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:views\\estoque\\compra.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\viewmodels\\producaoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\viewmodels\\producaoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\lote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\lote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\data\\loterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:data\\loterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\models\\viewmodels\\compraviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:models\\viewmodels\\compraviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|c:\\pc\\faculdade\\4 semestre\\pim\\agropindas\\views\\producao\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ACF87293-9DAE-4031-B9EF-0AA7BD874551}|agropindas.csproj|solutionrelative:views\\producao\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,111 +34,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 173,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Compra.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Compra.cs",
-              "RelativeDocumentMoniker": "Models\\Compra.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Compra.cs",
-              "RelativeToolTip": "Models\\Compra.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T14:43:52.773Z",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Producao\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Producao\\Index.cshtml",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Producao\\Index.cshtml",
+              "RelativeToolTip": "Views\\Producao\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-03T23:57:07.896Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T03:54:28.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CompraRepositoy.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\CompraRepositoy.cs",
-              "RelativeDocumentMoniker": "Data\\CompraRepositoy.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\CompraRepositoy.cs",
-              "RelativeToolTip": "Data\\CompraRepositoy.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAtwCwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T03:49:23.509Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Lote.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Lote.cs",
-              "RelativeDocumentMoniker": "Models\\Lote.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\Lote.cs",
-              "RelativeToolTip": "Models\\Lote.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAQwAYAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T03:45:08.324Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Compra.cshtml",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Estoque\\Compra.cshtml",
-              "RelativeDocumentMoniker": "Views\\Estoque\\Compra.cshtml",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Estoque\\Compra.cshtml",
-              "RelativeToolTip": "Views\\Estoque\\Compra.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-24T14:59:49.133Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LoteRepository.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\LoteRepository.cs",
-              "RelativeDocumentMoniker": "Data\\LoteRepository.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\LoteRepository.cs",
-              "RelativeToolTip": "Data\\LoteRepository.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAswCoAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T03:37:58.85Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "EstoqueController.cs",
               "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\EstoqueController.cs",
               "RelativeDocumentMoniker": "Controllers\\EstoqueController.cs",
               "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\EstoqueController.cs",
               "RelativeToolTip": "Controllers\\EstoqueController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAIAwwDQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAAHwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T14:56:34.183Z",
+              "WhenOpened": "2024-11-04T01:22:33.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CompraViewModel.cs",
-              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\ViewModels\\CompraViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\ViewModels\\CompraViewModel.cs",
-              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\ViewModels\\CompraViewModel.cs",
-              "RelativeToolTip": "Models\\ViewModels\\CompraViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAwA4AAAAgAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "EditArea.cshtml",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Producao\\EditArea.cshtml",
+              "RelativeDocumentMoniker": "Views\\Producao\\EditArea.cshtml",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Views\\Producao\\EditArea.cshtml",
+              "RelativeToolTip": "Views\\Producao\\EditArea.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADwAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-03T23:56:59.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProducaoViewModel.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\ViewModels\\ProducaoViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ViewModels\\ProducaoViewModel.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Models\\ViewModels\\ProducaoViewModel.cs",
+              "RelativeToolTip": "Models\\ViewModels\\ProducaoViewModel.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T13:59:11.394Z",
+              "WhenOpened": "2024-11-03T23:14:49.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProducaoController.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\ProducaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProducaoController.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Controllers\\ProducaoController.cs",
+              "RelativeToolTip": "Controllers\\ProducaoController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T20:48:45.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EstoqueRepository.cs",
+              "DocumentMoniker": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\EstoqueRepository.cs",
+              "RelativeDocumentMoniker": "Data\\EstoqueRepository.cs",
+              "ToolTip": "C:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\Data\\EstoqueRepository.cs",
+              "RelativeToolTip": "Data\\EstoqueRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAuwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T03:37:58.85Z",
               "EditorCaption": ""
             }
           ]

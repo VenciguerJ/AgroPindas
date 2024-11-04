@@ -1,60 +1,57 @@
 ﻿@{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Lotes";
 }
-@model IEnumerable<Produto>
+@model IEnumerable<Lote>
 
 <h1>@ViewData["Title"]</h1>
-    
-<br/>
+
+<br />
 
 <nav class="navbar navbar-light bg-light d-flex justify-content-between">
-    <a asp-action="Create" class="btn btn-success">Novo Produto</a>
     <form class="form-inline d-flex" asp-action="Index">
         <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Pesquise o produto">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
 </nav>
 
-<hr />
 <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark" style="color: #18b955">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Numero do Lote
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                Produto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoProduto)
-            </th> 
+                Quantidade do Lote
+            </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnidadeCadastro)
+                Quantidade de saídas
             </th>
             <th colspan="2">Ações</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var produto in Model)
+        @foreach (var lote in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.Id)
+                    @Html.DisplayFor(modelItem => lote.IdCompra)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.Nome)
+                    @Html.DisplayFor(modelItem => lote.Produto.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.OTipoProduto.Nome)
+                    @Html.DisplayFor(modelItem => lote.QuantidadeLote)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.OUnidadeCadastro.Nome)
+                    @Html.DisplayFor(modelItem => lote.QuantidadeSaida)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@produto.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@produto.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-action="Delete" asp-route-IdProduto="@lote.IdProduto" asp-route-IdCompra="@lote.IdCompra" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                 </td>
             </tr>
         }
