@@ -1,16 +1,21 @@
 ﻿using agropindas.Models;
 using agropindas.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.CodeAnalysis;
 namespace agropindas.Controllers
 {
     public class ProducaoController : Controller
     {
         private readonly EstoqueRepository _estoque;
         private readonly ICrudRepository<Produto> _produtos;
-        public ProducaoController(EstoqueRepository e, ICrudRepository<Produto> p)
+        private readonly ICrudRepository<Producao> _producao;
+        public ProducaoController(EstoqueRepository e, ICrudRepository<Produto> p, ICrudRepository<Producao> prd)
         {
             _estoque = e;
             _produtos = p;
+            _producao = prd;
+
         }
         public async Task<IActionResult> Index()
         {
@@ -39,6 +44,57 @@ namespace agropindas.Controllers
             return View(view);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SaveProduction(ProducaoViewModel PVM, List<Fertilizante>? Fertilizantes)
+        {
+            try
+            {
+                //suporteCalha
+                await _estoque.UpdateSuporte(PVM.SuporteProducao);
 
+                //producaoCalha
+
+                var lotes = await _estoque.GetAll(PVM.ProducaoCalha.IdProdutoProduzido.ToString());
+                var lote = new Lote();
+                foreach(var l in lotes)
+                {
+                    if (PVM.ProducaoCalha.IdLoteUsado == l.IdCompra)
+                    {
+                        lote = l; break;
+                    }
+                }
+
+                if(PVM.ProducaoCalha.QuantidadeProduzido > (lote.QuantidadeLote - lote.QuantidadeSaida))
+                {
+                    TempData["ErrorMessage"] = "A quantidade disponível do lote não é suficiente para fazer esta produção";
+                    return View(PVM);
+                }
+                if(PVM.ProducaoCalha.QuantidadeProduzido > PVM.SuporteProducao.CapacidadeMudas)
+                {
+                    TempData["ErrorMessage"] = "A quantidade Da area total não é suficiente para fazer esta produção";
+                    return View(PVM);
+                }
+
+                //define dia da colheita.
+                var prod = await _produtos.Get(PVM.ProducaoCalha.IdProdutoProduzido);
+                PVM.ProducaoCalha.DiaColheita = DateTime.Now.AddDays(prod.DiasColheita);
+
+                _producao.Add(PVM.ProducaoCalha);
+
+
+                //Fertilizantes
+                foreach(var f in Fertilizantes)
+                {
+                    _estoque.AddFertilizanteCalha(f);
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Erro ao Realizar operação, consulte o console do desenvolvedor";
+                return RedirectToAction("Index");
+            }
+        }
     }
 }   

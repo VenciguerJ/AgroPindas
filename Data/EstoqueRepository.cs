@@ -21,8 +21,8 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
 
     public async Task<IEnumerable<Lote>>GetAll(string str)
     {
-        int IdProduto = int.Parse(str);
-        return await _dbConnection.QueryAsync<Lote>("SELECT * FROM Lote where IdProduto = @Nome", new {Nome = IdProduto });
+        int Idproduto = int.Parse(str);
+        return await _dbConnection.QueryAsync<Lote>("SELECT * FROM Lote WHERE IdProduto = @IdProduto", new { IdProduto = Idproduto });
     }
 
     public async Task<Lote?> Get(int id)
@@ -80,5 +80,28 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
     public async Task<SuporteCalha> GetCalha(int Id)
     {
         return await _dbConnection.QueryFirstOrDefaultAsync<SuporteCalha>("SELECT * FROM Suporte_Calhas WHERE id = @id", new { id = Id });
+    }
+
+    public async Task UpdateSuporte(SuporteCalha sup)
+    {
+        var query = @"UPDATE Suporte_Calhas SET 
+                    CapacidadeMudas = @CapacidadeMudas, 
+                    ocupada = @ocupada
+                    WHERE Id = @Id";
+
+        await _dbConnection.ExecuteAsync(query, sup);
+    }
+
+
+    //Fertilizante Calhas
+
+
+    public async Task AddFertilizanteCalha(Fertilizante entity)
+    {
+        var query = @"INSERT INTO Suporte_Calhas_Fertilizantes (IdSuporte, IdProduto, QtdUtilizada) 
+                    VALUES (@IdSuporte, @Id, @QtdUtilizada)";
+
+        var resultado = await _dbConnection.ExecuteAsync(query, entity);
+
     }
 }

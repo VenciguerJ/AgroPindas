@@ -4,31 +4,32 @@
 }
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Gerenciamento de Produção</h1>
+    <h1 class="text-center mb-4 text-success">Gerenciamento de Produção</h1>
 
     <!-- Seção Suporte Calha -->
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header bg-primary text-white">
+    <div class="card mb-4 shadow-sm border-success">
+        <div class="card-header bg-success text-white">
             <h3>Detalhes do Suporte Calha</h3>
         </div>
         <div class="card-body">
-            <form asp-action="Save" method="post">
+            <form asp-action="SaveProduction" method="post">
+                <input type="hidden" asp-for="SuporteProducao.Id" />
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group mb-3">
                             <label asp-for="SuporteProducao.CapacidadeMudas" class="form-label">Capacidade de Mudas</label>
-                            <input asp-for="SuporteProducao.CapacidadeMudas" class="form-control" type="number" placeholder="Capacidade de Mudas" />
+                            <input asp-for="SuporteProducao.CapacidadeMudas" class="form-control border-success" type="number" placeholder="Capacidade de Mudas" />
                             <span asp-validation-for="SuporteProducao.CapacidadeMudas" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-3">
                             <label class="form-label">Ocupada</label>
-                            <div class="form-check">
+                            <div class="form-check form-check-inline">
                                 <input asp-for="SuporteProducao.ocupada" class="form-check-input" type="radio" value="true" id="ocupada-true" />
                                 <label for="ocupada-true" class="form-check-label">Sim</label>
                             </div>
-                            <div class="form-check">
+                            <div class="form-check form-check-inline">
                                 <input asp-for="SuporteProducao.ocupada" class="form-check-input" type="radio" value="false" id="ocupada-false" />
                                 <label for="ocupada-false" class="form-check-label">Não</label>
                             </div>
@@ -36,91 +37,98 @@
                         </div>
                     </div>
                 </div>
+@*                 @if (Model.ProducaoCalha == null && Model.ProducaoCalha != null)
+                { *@
+                    <!--Botão para abrir form de produção-->
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-success mb-4" onclick="toggleForm()">Iniciar Produção</button>
+                    </div>
+
+                    <!-- Seção Produção -->
+                    <div id="productionForm" style="display: none;">
+                        <div class="card-header bg-secondary text-white">
+                            <h3>Detalhes da Produção</h3>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="form-group mb-3">
+                                    <label for="js-recupera-Lote">Produto a ser cultivado</label>
+                                    <select asp-for="ProducaoCalha.IdProdutoProduzido" id="js-recupera-Lote" class="form-control border-success" onchange="buscarLotes()">
+                                        <option value="0">Selecione...</option>
+                                        @foreach (var p in Model.produtosView)
+                                        {
+                                            <option value="@p.Id">@p.Nome</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="IdLoteUsado">Lote Utilizado</label>
+                                    <select id="IdLoteUsado" class="form-control border-success" asp-for="ProducaoCalha.IdLoteUsado">
+                                        <option value="0">Selecione um lote...</option>
+                                        <!-- Opções serão preenchidas dinamicamente -->
+                                    </select>
+                                    <span asp-validation-for="ProducaoCalha.IdLoteUsado" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="QuantidadeProduzido">Quantidade que será produzida</label>
+                                    <input type="number" id="QuantidadeProduzido" class="form-control border-success" asp-for="ProducaoCalha.QuantidadeProduzido" placeholder="Informe a quantidade produzida" onchange="validaQuantidade(this)">
+                                    <span id="quantidade-error" class="text-danger"></span>
+                                </div>
+
+                                <input type="hidden" asp-for="ProducaoCalha.IdCalha" value="@Model.SuporteProducao.Id" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">Inclusão de Fertilizantes</h5>
+                            <table class="table table-bordered border-success">
+                                <thead class="table-success">
+                                    <tr>
+                                        <th>Nome do Fertilizante</th>
+                                        <th>Quantidade Utilizada</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fertilizantesTableBody">
+                                    <!-- Linhas serão adicionadas dinamicamente aqui -->
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-outline-success" onclick="adicionarFertilizante()">Adicionar Fertilizante</button>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Submissão -->
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">Salvar Informações do Suporte</button>
+                    </div>
+@*                 } *@
             </form>
         </div>
     </div>
-
-    @if(Model.ProducaoCalha == null)
-    {
-        <!--Botão para abrir form de produção-->
-        <div class="text-center">
-            <button class="btn btn-primary mb-4" onclick="toggleForm()">Iniciar Produção</button>
-        </div>
-
-        <!-- Seção Produção -->
-        <div id="productionForm" style="display: none;">
-            <div class="card-header bg-secondary text-white">
-                <h3>Detalhes da Produção</h3>
-            </div>
-            <form asp-action="CreateProduction" method="post">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="form-group mb-3">
-                            <label for="js-recupera-Lote">Produto a ser cultivado</label>
-                            <select id="js-recupera-Lote" class="form-control" onchange="buscarLotes()">
-                                <option value="0">Selecione...</option>
-                                @foreach (var p in Model.produtosView)
-                                {
-                                    <option value="@p.Id">@p.Nome</option>
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="IdLoteUsado">Lote Utilizado</label>
-                            <select id="IdLoteUsado" class="form-control" asp-for="ProducaoCalha.IdLoteUsado">
-                                <option value="">Selecione um lote...</option>
-                                <!-- Opções serão preenchidas dinamicamente -->
-                            </select>
-                            <span asp-validation-for="ProducaoCalha.IdLoteUsado" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="QuantidadeProduzido">Quantidade que será produzida</label>
-                            <input type="number" id="QuantidadeProduzido" class="form-control" asp-for="ProducaoCalha.QuantidadeProduzido" placeholder="Informe a quantidade produzida">
-                            <span asp-validation-for="ProducaoCalha.QuantidadeProduzido" class="text-danger"></span>
-                        </div>
-
-                        <input type="hidden" asp-for="ProducaoCalha.IdCalha" value="@Model.SuporteProducao.Id" />
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success">Salvar Produção</button>
-                </div>
-            </form>
-        </div>
-
-        <!-- Botão de Submissão -->
-        <div class="d-flex justify-content-center mt-4">
-            <button type="submit" class="btn btn-primary btn-lg">Salvar Produção</button>
-        </div>
-    }
 </div>
-    
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 @section Scripts {
     <script>
+        var QTD_PERMITIDA_PRODUCTION;
 
         function buscarLotes() {
             var produtoId = document.getElementById("js-recupera-Lote").value;
-
-            // Limpa as opções atuais de lote
             var loteSelect = document.getElementById("IdLoteUsado");
-            //loteSelect.innerHTML = '<option value="">Selecione um lote...</option>';
 
-            // Verifica se um produto válido foi selecionado
             if (produtoId !== "0") {
-                // Faz a requisição AJAX para obter os lotes
                 fetch(`/Estoque/GetLotesByProduto?produtoId=${produtoId}`)
                     .then(response => response.json())
                     .then(lotes => {
-                        // Popula o campo de lotes com os dados retornados
                         lotes.forEach(lote => {
+                            QTD_PERMITIDA_PRODUCTION = parseInt((lote.quantidadeLote - lote.quantidadeSaida));
                             var option = document.createElement("option");
-                            option.value = lote.Id;
-                            option.text = lote.Nome;
+                            option.value = lote.idCompra;
+                            option.text = `Lote ${lote.idCompra} (${lote.quantidadeLote - lote.quantidadeSaida} unidades restantes )`;
                             loteSelect.add(option);
                         });
                     })
@@ -128,10 +136,53 @@
             }
         }
 
+        function validaQuantidade(input) {
+            var quantidade = parseInt(input.value, 10);
+            var errorSpan = document.getElementById("quantidade-error");
+
+            if (quantidade > QTD_PERMITIDA_PRODUCTION) {
+                errorSpan.textContent = `A quantidade informada (${quantidade}) excede o limite permitido de ${QTD_PERMITIDA_PRODUCTION}.`;
+            } else {
+                errorSpan.textContent = "";
+            }
+        }
+
+        let contadorFertilizantes = 0;
+
+        function adicionarFertilizante() {
+            const tableBody = document.getElementById("fertilizantesTableBody");
+            const novaLinha = document.createElement("tr");
+
+            novaLinha.innerHTML = `
+                        <td>
+                            <select name="Fertilizantes[${contadorFertilizantes}].Nome" class="form-control border-success">
+                                <option value="">Selecione...</option>
+                                    @foreach (var fertilizante in Model.produtosView)
+                                    {
+                                        <option value="@fertilizante.Id">@fertilizante.Nome</option>
+                                    }
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="Fertilizantes[${contadorFertilizantes}].QtdUtilizada" class="form-control border-success" placeholder="Quantidade">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="removerFertilizante(this)">Remover</button>
+                        </td>
+                    `;
+
+            tableBody.appendChild(novaLinha);
+            contadorFertilizantes++;
+        }
+
+        function removerFertilizante(button) {
+            const linha = button.closest("tr");
+            linha.remove();
+        }
+
         function toggleForm() {
             const form = document.getElementById('productionForm');
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
         }
-
     </script>
 }

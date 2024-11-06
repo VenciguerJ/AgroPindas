@@ -7,14 +7,14 @@
 <a asp-controller="Producao" asp-action="CreateArea" class="btn btn-success">Nova área produtiva</a>
 <hr/>
 
-<div class="container shadow">
+<div class="container shadow d-flex justify-content-evenly">
     @foreach (var p in Model)
     {
         <div class="col-md-3 mb-4">
             <div class="card">
                 <img src="~/Content/IconSuporte.jpg" alt="Alternate Text" />
                 <h5>Area @p.Id</h5>
-                <h6>Capacidade: @p.CapacidadeMudas</h6>
+                <h6>Capacidade: @p.CapacidadeMudas Mudas</h6>
                 <p>Disponível: @(p.ocupada ? "Sim" : "Não")</p>
                 <div class="card-body d-flex justify-content-sm-evenly align-items-center">
                     <a asp-action="EditArea" asp-route-id="@p.Id" class="btn btn-warning">

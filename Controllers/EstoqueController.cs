@@ -119,10 +119,10 @@ namespace agropindas.Controllers
 
         //AJAX FUNCTION
         [HttpGet]
-        public IActionResult GetLotesByProduto(int produtoId)
+        public async Task<JsonResult> GetLotesByProduto(int produtoId)
         {
             // Busca os lotes associados ao produto selecionado
-            var lotes = _lote.Get(produtoId);
+            var lotes = await _lote.GetAll(produtoId.ToString());
 
             // Retorna a lista de lotes em formato JSON
             return Json(lotes);

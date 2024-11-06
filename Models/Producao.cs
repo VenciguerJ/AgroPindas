@@ -7,5 +7,5 @@ public class Producao
     public int IdProdutoProduzido { get; set; }
     public int QuantidadeProduzido { get; set; }
     public int IdCalha { get; set; }
-    public DateTime DiaColheita { get; set; }
+    public DateTime? DiaColheita { get; set; }
 }

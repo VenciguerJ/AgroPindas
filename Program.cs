@@ -23,6 +23,7 @@ builder.Services.AddScoped<ICrudRepository<Fornecedor>, FornecedorRepository>();
 builder.Services.AddScoped<ICrudRepository<Produto>, ProdutoRepository>();
 builder.Services.AddScoped<ISelectItems<ProdAssets>, ProdAssetsRepository>();
 builder.Services.AddScoped<ICrudRepository<Compra>, CompraRepositoy>();
+builder.Services.AddScoped<ICrudRepository<Producao>, ProducaoRepository>();
 builder.Services.AddScoped<EstoqueRepository>();
 
 var app = builder.Build();
