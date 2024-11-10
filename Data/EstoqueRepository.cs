@@ -42,20 +42,16 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
                     VALUES (@IdCompra, @IdProduto, @QuantidadeLote,0)";
 
         var resultado = await _dbConnection.ExecuteAsync(query, entity);
-        Console.WriteLine(resultado);
 
 	}
 
     public async Task Update(Lote func)
     {
         var query = @"UPDATE Lote SET 
-                    Nome = @Nome, 
-                    Descricao = @Descricao, 
-                    TemperaturaPlantio = @TemperaturaPlantio ,
-                    DiasColheita = @DiasColheita,
-                    UnidadeCadastro = @UnidadeCadastro,
-                    TipoLote = @TipoLote
-                    WHERE Id = @Id";
+                    IdCompra = @IdCompra, 
+                    IdProduto = @IdProduto, 
+                    QuantidadeLote = @QuantidadeLote ,
+                    QuantidadeSaida = @QuantidadeSaida;";
 
         await _dbConnection.ExecuteAsync(query, func);
     }

@@ -58,7 +58,7 @@ namespace agropindas.Controllers
                 var lote = new Lote();
                 foreach(var l in lotes)
                 {
-                    if (PVM.ProducaoCalha.IdLoteUsado == l.IdCompra)
+                    if (PVM.ProducaoCalha.IdLoteUsado == l.IdCompra) // vê qual é o produto da calha nmovamente
                     {
                         lote = l; break;
                     }
@@ -75,11 +75,16 @@ namespace agropindas.Controllers
                     return View(PVM);
                 }
 
+                lote.QuantidadeSaida = PVM.ProducaoCalha.QuantidadeProduzido;
+
+                await _estoque.Update(lote);
+
                 //define dia da colheita.
                 var prod = await _produtos.Get(PVM.ProducaoCalha.IdProdutoProduzido);
                 PVM.ProducaoCalha.DiaColheita = DateTime.Now.AddDays(prod.DiasColheita);
 
                 _producao.Add(PVM.ProducaoCalha);
+
 
 
                 //Fertilizantes
@@ -93,6 +98,7 @@ namespace agropindas.Controllers
             catch (Exception ex)
             {
                 TempData["ErrorMessage"] = "Erro ao Realizar operação, consulte o console do desenvolvedor";
+                Console.WriteLine(ex.ToString());
                 return RedirectToAction("Index");
             }
         }

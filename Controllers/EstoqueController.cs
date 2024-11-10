@@ -82,7 +82,7 @@ namespace agropindas.Controllers
                     else
                     {
                         lote.IdCompra = LastInsert.Id;
-                        _lote.Add(lote);
+                        await _lote.Add(lote);
                     }
                 }
 
@@ -93,6 +93,7 @@ namespace agropindas.Controllers
             catch (Exception ex) 
             {
                 TempData["ErrorMessage"] = "Erro no processo, verifique o console";
+                Console.WriteLine(ex.ToString());
                 return RedirectToAction("HomePage", "Home");
             }
         }

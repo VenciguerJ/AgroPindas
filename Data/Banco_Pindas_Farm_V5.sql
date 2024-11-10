@@ -127,7 +127,7 @@ DROP TABLE IF EXISTS Producao;
 
 CREATE TABLE Producao(
 	Id int identity not null primary key,
-	IdLoteUsasdo int not null,
+	IdLoteUsado int not null,
 	IdProdutoProduzido int not null,
 	QuantidadeProduzido int not null,
 	IdCalha int not null,

@@ -68,7 +68,8 @@ public class ProdutoRepository : ICrudRepository<Produto>
                     TemperaturaPlantio = @TemperaturaPlantio ,
                     DiasColheita = @DiasColheita,
                     UnidadeCadastro = @UnidadeCadastro,
-                    TipoProduto = @TipoProduto
+                    TipoProduto = @TipoProduto,
+                    ValorProduto = @ValorProduto
                     WHERE Id = @Id";
 
         await _dbConnection.ExecuteAsync(query, func);

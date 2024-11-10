@@ -33,18 +33,11 @@ public class ProducaoRepository : ICrudRepository<Producao>
     public async Task Add(Producao entity)
     {
 		var query = @"INSERT INTO Producao 
-                    (Id, IdLoteUsado, IdProdutoProduzido, QuantidadeProduzido, IdCalha) 
-                    VALUES (@Id, @IdLoteUsado, @IdProdutoProduzido, @QuantidadeProduzido, @IdCalha)";
+                    (IdLoteUsado, IdProdutoProduzido, QuantidadeProduzido, IdCalha, DiaColheita) 
+                    VALUES (@IdLoteUsado, @IdProdutoProduzido, @QuantidadeProduzido, @IdCalha, @DiaColheita)";
 
-        try
-        {
-            var resultado = await _dbConnection.ExecuteAsync(query, entity);
-            Console.WriteLine(resultado);
-        }
-        catch (Exception ex) 
-        { 
-            Console.WriteLine(ex.ToString());
-        }
+        var resultado = await _dbConnection.ExecuteAsync(query, entity);
+        Console.WriteLine(resultado);
 	}
 
     public async Task Update(Producao func)

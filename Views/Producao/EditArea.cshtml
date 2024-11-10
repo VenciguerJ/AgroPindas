@@ -37,8 +37,7 @@
                         </div>
                     </div>
                 </div>
-@*                 @if (Model.ProducaoCalha == null && Model.ProducaoCalha != null)
-                { *@
+
                     <!--Botão para abrir form de produção-->
                     <div class="text-center">
                         <button type="button" class="btn btn-outline-success mb-4" onclick="toggleForm()">Iniciar Produção</button>
@@ -156,7 +155,7 @@
             novaLinha.innerHTML = `
                         <td>
                             <select name="Fertilizantes[${contadorFertilizantes}].Nome" class="form-control border-success">
-                                <option value="">Selecione...</option>
+                                        <option value="Fertilizantes[${contadorFertilizantes}.Id]">Selecione...</option>
                                     @foreach (var fertilizante in Model.produtosView)
                                     {
                                         <option value="@fertilizante.Id">@fertilizante.Nome</option>

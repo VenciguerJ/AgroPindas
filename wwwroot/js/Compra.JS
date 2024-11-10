@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     const table = document.getElementById('table-js-product');
-
     // Função para buscar o preço do produto via AJAX
     function buscarPrecoProduto(produtoId, callback) {
         fetch(`/Estoque/GetProduto?id=${produtoId}`)  // Corrigido para usar o produtoId dinamicamente
