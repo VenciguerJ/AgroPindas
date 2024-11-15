@@ -89,6 +89,14 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
     }
 
 
+    public async Task DeleteSuporte(int id)
+    {
+        var query = @"
+                        Delete From Suporte_Calhas where Id = @Id
+                    ";
+        var resultado = await _dbConnection.ExecuteAsync(query, new { Id = id });
+    }
+
     //Fertilizante Calhas
 
 

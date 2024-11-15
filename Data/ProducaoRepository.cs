@@ -16,13 +16,13 @@ public class ProducaoRepository : ICrudRepository<Producao>
     {
         return await _dbConnection.QueryAsync<Producao>("SELECT * FROM Producao");
     }
-    public async Task<IEnumerable<Producao>> GetAll(string nome)
+    public async Task<IEnumerable<Producao>> GetAll(string id)
     {
-        return await _dbConnection.QueryAsync<Producao>("SELECT * FROM Producao  WHERE RazaoSocial LIKE @Nome OR CNPJ LIKE @Nome",new { Nome = "%" + nome + "%" });
+        return await _dbConnection.QueryAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Nome",new { Nome = id });
     }
-    public async Task<Producao?> Get(int num)
+    public async Task<Producao?> Get(int IdSuporteCalha)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE Id = @Id", new { Id = num });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id", new { Id = IdSuporteCalha });
     }
 
     public async Task <Producao?> Get(string cnpj)

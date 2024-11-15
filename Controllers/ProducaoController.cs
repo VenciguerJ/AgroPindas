@@ -40,7 +40,8 @@ namespace agropindas.Controllers
         {
             var sup = await _estoque.GetCalha(id);
             var produtosView = await _produtos.GetAll();
-            ProducaoViewModel view = new ProducaoViewModel(sup, produtosView);
+            var producaoView = await _producao.Get(sup.Id);
+            ProducaoViewModel view = new ProducaoViewModel(sup, produtosView, producaoView);
             return View(view);
         }
 
@@ -75,7 +76,7 @@ namespace agropindas.Controllers
                     return View(PVM);
                 }
 
-                lote.QuantidadeSaida = PVM.ProducaoCalha.QuantidadeProduzido;
+                lote.QuantidadeSaida -= PVM.ProducaoCalha.QuantidadeProduzido;
 
                 await _estoque.Update(lote);
 
@@ -83,22 +84,43 @@ namespace agropindas.Controllers
                 var prod = await _produtos.Get(PVM.ProducaoCalha.IdProdutoProduzido);
                 PVM.ProducaoCalha.DiaColheita = DateTime.Now.AddDays(prod.DiasColheita);
 
-                _producao.Add(PVM.ProducaoCalha);
+                await _producao.Add(PVM.ProducaoCalha);
 
 
 
-                //Fertilizantes
+                //Fertilizantes 
                 foreach(var f in Fertilizantes)
                 {
-                    _estoque.AddFertilizanteCalha(f);
+                   await _estoque.AddFertilizanteCalha(f);
                 }
-
+                TempData["SuccessMessage"] = "Alterações salvas";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 TempData["ErrorMessage"] = "Erro ao Realizar operação, consulte o console do desenvolvedor";
                 Console.WriteLine(ex.ToString());
+                return RedirectToAction("Index");
+            }
+        }
+
+        public async Task<IActionResult> DeleteSuporte(int id)
+        {
+            try
+            {
+                var productions = await _producao.GetAll(id.ToString());
+                foreach(var prod in productions) 
+                {
+                    await _producao.Delete(prod.Id);
+                }
+                await _estoque.DeleteSuporte(id);
+                TempData["SuccessMessage"] = "Suporte excluso!";
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                TempData["ErrorMessage"] = "Erro ao Realizar operação, consulte o console do desenvolvedor";
                 return RedirectToAction("Index");
             }
         }

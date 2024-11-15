@@ -9,34 +9,36 @@
     <!-- Seção Suporte Calha -->
     <div class="card mb-4 shadow-sm border-success">
         <div class="card-header bg-success text-white">
-            <h3>Detalhes do Suporte Calha</h3>
+            <h3>Detalhes do Suporte de calhas</h3>
         </div>
         <div class="card-body">
-            <form asp-action="SaveProduction" method="post">
-                <input type="hidden" asp-for="SuporteProducao.Id" />
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label asp-for="SuporteProducao.CapacidadeMudas" class="form-label">Capacidade de Mudas</label>
-                            <input asp-for="SuporteProducao.CapacidadeMudas" class="form-control border-success" type="number" placeholder="Capacidade de Mudas" />
-                            <span asp-validation-for="SuporteProducao.CapacidadeMudas" class="text-danger"></span>
+            @if (Model.ProducaoCalha == null)
+            {
+                <form asp-action="SaveProduction" method="post">
+                    <input type="hidden" asp-for="SuporteProducao.Id" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label asp-for="SuporteProducao.CapacidadeMudas" class="form-label">Capacidade de Mudas</label>
+                                <input asp-for="SuporteProducao.CapacidadeMudas" class="form-control border-success" type="number" placeholder="Capacidade de Mudas" />
+                                <span asp-validation-for="SuporteProducao.CapacidadeMudas" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Ocupada</label>
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="SuporteProducao.ocupada" class="form-check-input" type="radio" value="true" id="ocupada-true" />
+                                    <label for="ocupada-true" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="SuporteProducao.ocupada" class="form-check-input" type="radio" value="false" id="ocupada-false" />
+                                    <label for="ocupada-false" class="form-check-label">Não</label>
+                                </div>
+                                <span asp-validation-for="SuporteProducao.ocupada" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label class="form-label">Ocupada</label>
-                            <div class="form-check form-check-inline">
-                                <input asp-for="SuporteProducao.ocupada" class="form-check-input" type="radio" value="true" id="ocupada-true" />
-                                <label for="ocupada-true" class="form-check-label">Sim</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input asp-for="SuporteProducao.ocupada" class="form-check-input" type="radio" value="false" id="ocupada-false" />
-                                <label for="ocupada-false" class="form-check-label">Não</label>
-                            </div>
-                            <span asp-validation-for="SuporteProducao.ocupada" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
 
                     <!--Botão para abrir form de produção-->
                     <div class="text-center">
@@ -104,7 +106,34 @@
                     <div class="d-flex justify-content-center mt-4">
                         <button type="submit" class="btn btn-success btn-lg">Salvar Informações do Suporte</button>
                     </div>
-@*                 } *@
+                </form>
+            }
+            else
+            {
+                <!-- Visualização da produção existente -->
+                <div>
+                    <h5>Produção atual</h5>
+                    @foreach (var p in Model.produtosView)
+                    {
+                        @if (p.Id == Model.ProducaoCalha.IdProdutoProduzido)
+                        {
+                            <p>Produto: @p.Nome</p>
+                            break;
+                        }
+                    }
+                    <p>Quantidade Produzida: @Model.ProducaoCalha.QuantidadeProduzido</p>
+                    <p>Dias até a colheita: @(Model.ProducaoCalha.DiaColheita.HasValue ? (Model.ProducaoCalha.DiaColheita.Value - DateTime.Now).Days : "N/A")</p>
+
+                    <!-- Botão para colher -->
+                    <form asp-action="Colheita" method="get">
+                        <button type="submit" class="btn btn-warning">Colher</button>
+                    </form>
+                </div>
+
+            }
+            <!-- Botão de Exclusão do Suporte (presente em ambas as condições) -->
+            <form asp-action="DeleteSuporte" asp-route-id="@Model.SuporteProducao.Id" method="post">
+                <button type="submit" class="btn btn-danger mt-4">Excluir Suporte</button>
             </form>
         </div>
     </div>

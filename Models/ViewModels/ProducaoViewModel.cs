@@ -7,12 +7,12 @@ public class ProducaoViewModel
 
     public IEnumerable<Produto> produtosView { get; set; }
 
-    public DateTime? DiaColheita { get; set; }
 
-    public ProducaoViewModel(SuporteCalha s, IEnumerable<Produto> prod) 
+    public ProducaoViewModel(SuporteCalha s, IEnumerable<Produto> prod, Producao? p) 
     {
         SuporteProducao = s;
         produtosView = prod;
+        ProducaoCalha = p;
     }
     public ProducaoViewModel() { }
 }
