@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/LotesProntos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxMb3Rlc1Byb250b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/_ColheitaPopUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cX0NvbGhlaXRhUG9wVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Create.cshtml]

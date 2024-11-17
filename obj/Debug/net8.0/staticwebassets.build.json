@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Afwv5QNUad4xo7AuWnVO/hxAarIgm+TWB+SoszEFi+M=",
+  "Hash": "ZwNCqD49Lf8QTY7zGvf7N8Pj7RU6aSY8wjVuRgvG/xw=",
   "Source": "agropindas",
   "BasePath": "_content/agropindas",
   "Mode": "Default",
@@ -167,25 +167,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
-    },
-    {
-      "Identity": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\js\\Compra.JS",
-      "SourceId": "agropindas",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\",
-      "BasePath": "_content/agropindas",
-      "RelativePath": "js/Compra.JS",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Compra.JS"
     },
     {
       "Identity": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\js\\site.js",

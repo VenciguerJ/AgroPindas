@@ -98,35 +98,21 @@ namespace agropindas.Controllers
             }
         }
 
-        //AJAX FUNCTION
-        [HttpGet]
-        public async Task<IActionResult> GetProduto(int id)
-        {
-            var prod = await _produtos.Get(id);
-
-            if (prod == null)
-            {
-                return NotFound();
-            }
-
-            return Json(new { preco = prod.ValorProduto }); // Encapsula o valor em um objeto
-        }
-
         public async Task<IActionResult> Delete(int IdProduto, int IdCompra)
         {
             await _lote.Delete(IdProduto, IdCompra);
             return RedirectToAction("Index");
         }
 
-        //AJAX FUNCTION
-        [HttpGet]
-        public async Task<JsonResult> GetLotesByProduto(int produtoId)
+        public async Task<IActionResult> LotesProntos()
         {
-            // Busca os lotes associados ao produto selecionado
-            var lotes = await _lote.GetAll(produtoId.ToString());
+            var view = await _lote.GetAllMudas();
 
-            // Retorna a lista de lotes em formato JSON
-            return Json(lotes);
-        }
+            foreach(var p in view)
+            {
+                p.ProdutoMuda = await _produtos.Get(p.Id);
+            }
+            return View(view);
+        } 
     }
 }

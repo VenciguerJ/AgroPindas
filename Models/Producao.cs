@@ -1,4 +1,6 @@
-﻿namespace agropindas.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace agropindas.Models;
 
 public class Producao
 {
@@ -8,4 +10,7 @@ public class Producao
     public int QuantidadeProduzido { get; set; }
     public int IdCalha { get; set; }
     public DateTime? DiaColheita { get; set; }
+
+    [Column("finalizada")]
+    public bool Finalizada { get; set; }
 }

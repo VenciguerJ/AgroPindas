@@ -3,6 +3,28 @@
     ViewData["Title"] = "Gerenciamento de Produção";
 }
 
+`<style>
+     .popup-container {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .popup-form {
+         background: white;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     }
+
+</style>
+
 <div class="container mt-5">
     <h1 class="text-center mb-4 text-success">Gerenciamento de Produção</h1>
 
@@ -11,8 +33,8 @@
         <div class="card-header bg-success text-white">
             <h3>Detalhes do Suporte de calhas</h3>
         </div>
-        <div class="card-body">
-            @if (Model.ProducaoCalha == null)
+        <div class="card-body"> 
+            @if (Model.ProducaoCalha != null || Model.ProducaoCalha.Finalizada == true)
             {
                 <form asp-action="SaveProduction" method="post">
                     <input type="hidden" asp-for="SuporteProducao.Id" />
@@ -90,7 +112,7 @@
                                 <thead class="table-success">
                                     <tr>
                                         <th>Nome do Fertilizante</th>
-                                        <th>Quantidade Utilizada</th>
+                                        <th>Quantidade Utilizada (g/ml)</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -124,10 +146,28 @@
                     <p>Quantidade Produzida: @Model.ProducaoCalha.QuantidadeProduzido</p>
                     <p>Dias até a colheita: @(Model.ProducaoCalha.DiaColheita.HasValue ? (Model.ProducaoCalha.DiaColheita.Value - DateTime.Now).Days : "N/A")</p>
 
+                    <h4>Fertilizantes utilizados</h4>
+                    @foreach(var f in Model.fertilizantesView)
+                    {
+                        <p>
+                            Nome:
+                        @foreach (var p in Model.produtosView)
+                        {
+                            if(f.Id == p.Id) {
+                                 @p.Nome
+                            }
+                        }
+                        | Quantidade utilizada: @f.QtdUtilizada
+                        </p>
+                    }
+
                     <!-- Botão para colher -->
-                    <form asp-action="Colheita" method="get">
-                        <button type="submit" class="btn btn-warning">Colher</button>
-                    </form>
+                    <button type="button" class="btn btn-primary" onclick="togglePopup()">Colheita</button>
+
+                    <!--Partial view-->
+                    <div id="popupContainer" class="popup-container" style="display: none;">
+                        @await Html.PartialAsync("_ColheitaPopUp", Model.LoteView)
+                    </div>
                 </div>
 
             }
@@ -149,14 +189,14 @@
             var loteSelect = document.getElementById("IdLoteUsado");
 
             if (produtoId !== "0") {
-                fetch(`/Estoque/GetLotesByProduto?produtoId=${produtoId}`)
+                fetch(`/API/GetLotesByProduto?produtoId=${produtoId}`)
                     .then(response => response.json())
                     .then(lotes => {
                         lotes.forEach(lote => {
                             QTD_PERMITIDA_PRODUCTION = parseInt((lote.quantidadeLote - lote.quantidadeSaida));
                             var option = document.createElement("option");
                             option.value = lote.idCompra;
-                            option.text = `Lote ${lote.idCompra} (${lote.quantidadeLote - lote.quantidadeSaida} unidades restantes )`;
+                            option.text = `Lote ${lote.idCompra} (${lote.quantidadeLote} unidades restantes )`;
                             loteSelect.add(option);
                         });
                     })
@@ -183,12 +223,12 @@
 
             novaLinha.innerHTML = `
                         <td>
-                            <select name="Fertilizantes[${contadorFertilizantes}].Nome" class="form-control border-success">
-                                        <option value="Fertilizantes[${contadorFertilizantes}.Id]">Selecione...</option>
-                                    @foreach (var fertilizante in Model.produtosView)
-                                    {
-                                        <option value="@fertilizante.Id">@fertilizante.Nome</option>
-                                    }
+                            <select name="Fertilizantes[${contadorFertilizantes}].Id" class="form-control border-success">
+                                <option value="Fertilizantes[${contadorFertilizantes}.Id]">Selecione...</option>
+                                @foreach (var fertilizante in Model.produtosView)
+                                {
+                                    <option value="@fertilizante.Id">@fertilizante.Nome</option>
+                                }
                             </select>
                         </td>
                         <td>
@@ -212,5 +252,17 @@
             const form = document.getElementById('productionForm');
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
         }
+
+        function togglePopup() {
+            const popup = document.getElementById("popupContainer");
+            popup.style.display = popup.style.display === "none" ? "block" : "none";
+        }
+
+        // Fecha o popup ao clicar em "Cancelar"
+        document.addEventListener("click", (e) => {
+            if (e.target.classList.contains("close-popup")) {
+                togglePopup();
+            }
+        });
     </script>
 }

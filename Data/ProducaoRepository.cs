@@ -18,23 +18,25 @@ public class ProducaoRepository : ICrudRepository<Producao>
     }
     public async Task<IEnumerable<Producao>> GetAll(string id)
     {
-        return await _dbConnection.QueryAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Nome",new { Nome = id });
+        int realId = int.Parse(id);
+        return await _dbConnection.QueryAsync<Producao>("SELECT * FROM Producao WHERE Id = @Id", new { Id = realId });
     }
-    public async Task<Producao?> Get(int IdSuporteCalha)
+    public async Task<Producao?> Get(int idAtivo)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id", new { Id = IdSuporteCalha });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id and finalizada = 1", new { Id = idAtivo });
     }
 
-    public async Task <Producao?> Get(string cnpj)
+    public async Task <Producao?> Get(string IdInativo)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE CNPJ = @CNPJ", new { CNPJ = cnpj });
+        int realId = int.Parse(IdInativo);
+        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id and finalizada = 0", new { Id = IdInativo });
     }
 
     public async Task Add(Producao entity)
     {
 		var query = @"INSERT INTO Producao 
-                    (IdLoteUsado, IdProdutoProduzido, QuantidadeProduzido, IdCalha, DiaColheita) 
-                    VALUES (@IdLoteUsado, @IdProdutoProduzido, @QuantidadeProduzido, @IdCalha, @DiaColheita)";
+                    (IdLoteUsado, IdProdutoProduzido, QuantidadeProduzido, IdCalha, DiaColheita, finalizada) 
+                    VALUES (@IdLoteUsado, @IdProdutoProduzido, @QuantidadeProduzido, @IdCalha, @DiaColheita, @Finalizada)";
 
         var resultado = await _dbConnection.ExecuteAsync(query, entity);
         Console.WriteLine(resultado);
@@ -43,12 +45,13 @@ public class ProducaoRepository : ICrudRepository<Producao>
     public async Task Update(Producao func)
     {
         var query = @"UPDATE Producao SET 
-                        CNPJ = @CNPJ, 
-                        RazaoSocial = @RazaoSocial, 
-                        Endereco = @Endereco, 
-                        Fone = @Fone, 
-                        Email = @Email 
-                    WHERE Id = @Id";
+                        IdLoteUsado = @IdLoteUsado, 
+                        IdProdutoProduzido = @IdProdutoProduzido, 
+                        QuantidadeProduzido = @QuantidadeProduzido, 
+                        IdCalha = @IdCalha, 
+                        DiaColheita = @DiaColheita, 
+                        finalizada = @Finalizada
+                        Where Id = @Id";
         await _dbConnection.ExecuteAsync(query, func);
     }
 

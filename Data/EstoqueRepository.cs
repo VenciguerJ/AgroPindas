@@ -49,9 +49,10 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
     {
         var query = @"UPDATE Lote SET 
                     IdCompra = @IdCompra, 
-                    IdProduto = @IdProduto, 
+                    IdProduto = @IdProduto,
                     QuantidadeLote = @QuantidadeLote ,
-                    QuantidadeSaida = @QuantidadeSaida;";
+                    QuantidadeSaida = @QuantidadeSaida
+                    WHERE IdProduto = @IdProduto;";
 
         await _dbConnection.ExecuteAsync(query, func);
     }
@@ -107,5 +108,41 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
 
         var resultado = await _dbConnection.ExecuteAsync(query, entity);
 
+    }
+
+    public async Task<IEnumerable<Fertilizante>> GetAllFertilizantes(int id)
+    {
+        var query = "SELECT IdProduto AS Id, IdSuporte, QtdUtilizada FROM Suporte_Calhas_Fertilizantes WHERE IdSuporte = @Id";
+
+        return await _dbConnection.QueryAsync<Fertilizante>(query, new { Id = id });
+    }
+
+    public async Task DeleteFertilizante(int Id)
+    {
+        var query = "DELETE FROM Suporte_Calhas_Fertilizantes where IdSuporte = @id";
+
+         await _dbConnection.ExecuteAsync(query, new { id = Id});
+    }
+
+    public async Task Colheita(LoteMuda entity)
+    {
+        var query = @"INSERT INTO Estoque_Produto
+                        (id_estoque_produto, 
+                        id_producao, 
+                        quantidade_inicial, 
+                        quantidade_vendido)
+                    VALUES
+                        (@IdEstoqueProduto,
+                        @IdProducao,
+                        @QuantidadeInicial,
+                        0)";
+
+        await _dbConnection.ExecuteAsync(query, entity);
+    }
+
+    public async Task<IEnumerable<LoteMuda>> GetAllMudas()
+    {
+        var resultado = await _dbConnection.QueryAsync<LoteMuda>("SELECT * FROM Estoque_Produto");
+        return resultado;
     }
 }

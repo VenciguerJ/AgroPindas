@@ -75,7 +75,7 @@ CREATE TABLE TipoProduto(
 );
 
 INSERT INTO TipoProduto(Nome)
-VALUES ('Embalagem'),('Materia Prima');
+VALUES ('Embalagem'),('Materia Prima'), ('Fertilizante');
 
 DROP TABLE IF EXISTS Produto;
 
@@ -131,29 +131,29 @@ CREATE TABLE Producao(
 	IdProdutoProduzido int not null,
 	QuantidadeProduzido int not null,
 	IdCalha int not null,
-	DiaColheita datetime not null
+	DiaColheita datetime not null,
+	finalizada bit not null
 	constraint fk_producao_calha foreign key (IdCalha) references Suporte_Calhas(Id)
 );
 
 DROP TABLE IF EXISTS Estoque_Produto;
 
 CREATE TABLE Estoque_Produto(
-	id_estoque_produto int identity not null primary key,
+	id int not null identity primary key,	
+	id_estoque_produto int not null,
 	id_producao int not null,
 	quantidade_inicial int not null,
 	quantidade_vendido int not null
-	constraint fk_estoquep_producao foreign key (id_producao) references Producao(Id)
 );
-
 
 DROP TABLE IF EXISTS Venda;
 
 CREATE TABLE Venda(
 	id_venda int identity not null primary key,
-	id_estoque_produto int not null,
+	Id_Lote int not null,
 	quantidade int not null,
 	valor_venda money not null
-	constraint fk_venda_estoque foreign key (id_estoque_produto) references Estoque_Produto(id_estoque_produto)
+	constraint fk_venda_estoque foreign key (Id_Lote) references Estoque_Produto(id)
 );
 
 

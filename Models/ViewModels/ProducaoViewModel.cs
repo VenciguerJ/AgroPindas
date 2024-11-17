@@ -7,6 +7,9 @@ public class ProducaoViewModel
 
     public IEnumerable<Produto> produtosView { get; set; }
 
+    public IEnumerable<Fertilizante>? fertilizantesView { get; set; }
+
+    public LoteMuda? LoteView { get; set; }
 
     public ProducaoViewModel(SuporteCalha s, IEnumerable<Produto> prod, Producao? p) 
     {

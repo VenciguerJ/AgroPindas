@@ -1,8 +1,7 @@
 ﻿using agropindas.Models;
 using agropindas.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.CodeAnalysis;
+
 namespace agropindas.Controllers
 {
     public class ProducaoController : Controller
@@ -15,7 +14,6 @@ namespace agropindas.Controllers
             _estoque = e;
             _produtos = p;
             _producao = prd;
-
         }
         public async Task<IActionResult> Index()
         {
@@ -41,7 +39,26 @@ namespace agropindas.Controllers
             var sup = await _estoque.GetCalha(id);
             var produtosView = await _produtos.GetAll();
             var producaoView = await _producao.Get(sup.Id);
+            var fertilizantes = await _estoque.GetAllFertilizantes(sup.Id);
+
             ProducaoViewModel view = new ProducaoViewModel(sup, produtosView, producaoView);
+           
+            view.fertilizantesView = fertilizantes;
+
+            if(view.ProducaoCalha != null || view.ProducaoCalha.Finalizada == true)
+            {
+                view.LoteView = new LoteMuda();
+                view.LoteView.IdProducao = view.ProducaoCalha.Id;
+                view.LoteView.IdEstoqueProduto = view.ProducaoCalha.IdProdutoProduzido;
+                foreach (var p in produtosView) 
+                {
+                    if(view.LoteView.IdEstoqueProduto == p.Id)
+                    {
+                        view.LoteView.ProdutoMuda = p;
+                    }
+                }
+                view.LoteView.QuantidadeInicial = view.ProducaoCalha.QuantidadeProduzido;
+            }
             return View(view);
         }
 
@@ -51,6 +68,11 @@ namespace agropindas.Controllers
             try
             {
                 //suporteCalha
+                if (PVM.ProducaoCalha != null)
+                {
+                    PVM.SuporteProducao.ocupada = true;
+                }
+
                 await _estoque.UpdateSuporte(PVM.SuporteProducao);
 
                 //producaoCalha
@@ -61,7 +83,7 @@ namespace agropindas.Controllers
                 {
                     if (PVM.ProducaoCalha.IdLoteUsado == l.IdCompra) // vê qual é o produto da calha nmovamente
                     {
-                        lote = l; break;
+                        lote = l;
                     }
                 }
 
@@ -76,21 +98,23 @@ namespace agropindas.Controllers
                     return View(PVM);
                 }
 
-                lote.QuantidadeSaida -= PVM.ProducaoCalha.QuantidadeProduzido;
+                lote.QuantidadeSaida +=  PVM.ProducaoCalha.QuantidadeProduzido;
+                lote.QuantidadeLote -= lote.QuantidadeSaida;
 
                 await _estoque.Update(lote);
 
-                //define dia da colheita.
+                //define dia da
+                //.
                 var prod = await _produtos.Get(PVM.ProducaoCalha.IdProdutoProduzido);
                 PVM.ProducaoCalha.DiaColheita = DateTime.Now.AddDays(prod.DiasColheita);
+                PVM.ProducaoCalha.Finalizada = false;
 
                 await _producao.Add(PVM.ProducaoCalha);
-
-
 
                 //Fertilizantes 
                 foreach(var f in Fertilizantes)
                 {
+                    f.IdSuporte = PVM.SuporteProducao.Id;
                    await _estoque.AddFertilizanteCalha(f);
                 }
                 TempData["SuccessMessage"] = "Alterações salvas";
@@ -113,6 +137,14 @@ namespace agropindas.Controllers
                 {
                     await _producao.Delete(prod.Id);
                 }
+
+                var fertilizantes = await _estoque.GetAllFertilizantes(id);
+
+                foreach(var f in fertilizantes)
+                {
+                    await _estoque.DeleteFertilizante(f.IdSuporte);
+                }
+
                 await _estoque.DeleteSuporte(id);
                 TempData["SuccessMessage"] = "Suporte excluso!";
                 return RedirectToAction("Index");
@@ -122,6 +154,27 @@ namespace agropindas.Controllers
                 Console.WriteLine(ex.ToString());
                 TempData["ErrorMessage"] = "Erro ao Realizar operação, consulte o console do desenvolvedor";
                 return RedirectToAction("Index");
+            }
+        }
+
+        public async Task<IActionResult> Colheita(LoteMuda l)
+            {
+            try
+            {
+                var producaoPronta = await _producao.Get(l.IdProducao.ToString());
+                producaoPronta.Finalizada = true;
+               await  _producao.Update(producaoPronta);
+                await _estoque.Colheita(l);
+                TempData["SuccessMessage"] = "Colheita inclusa com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Erro na iclusão, verifique o console";
+                Console.WriteLine(ex.ToString());
+
+                return RedirectToAction("Index");
+
             }
         }
     }

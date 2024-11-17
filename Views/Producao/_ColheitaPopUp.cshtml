@@ -1,0 +1,30 @@
+﻿@model LoteMuda
+
+<div class="popup-form">
+
+    <h1>Detalhes da colheita</h1>
+
+
+    <form asp-action="Colheita" method="post">
+        <h4>Informe os detalhes da colheita</h4>
+
+        <div class="mb-3">
+            <label for="campo2" class="form-label">Produto</label>
+            <select asp-for="IdEstoqueProduto" class="form-control border-success" readonly>
+                <option value="@Model.IdEstoqueProduto">@Model.ProdutoMuda.Nome</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quantidade aproveitada da plantação:</label>
+            <input asp-for="QuantidadeInicial" class="form-control border-success" />
+        </div>
+
+        <div class="mb-3">
+            <label for="campo2" class="form-label">Producao:</label>
+            <input asp-for="IdProducao" class="form-control border-success" readonly />
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-secondary close-popup">Cancelar</button>
+    </form>
+</div>
