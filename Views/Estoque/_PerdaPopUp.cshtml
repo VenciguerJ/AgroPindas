@@ -1,0 +1,60 @@
+﻿@model PerdaViewModel
+
+<div class="popup-form">
+
+    <h1>Detalhes da perda</h1>
+
+
+    <form asp-action="Perda" method="get">
+        <h4>Informe os detalhes da colheita</h4>
+
+        <div class="mb-3">
+            <label for="campo2" class="form-label">Produto</label>
+            <select asp-for="@Model.ProdutoPerda.Id" id="js-recupera-Lote" class="form-control border-success" onchange="buscarLotes()">
+                @foreach(var p in Model.ProdutosView)
+                {
+                    <option value="@p.Id">p.Nome</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quantidade aproveitada da plantação:</label>
+            <label for="campo2" class="form-label">Produto</label>
+            <select asp-for="@Model.LotePerda.IdCompra" class="form-control border-success">
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="campo2" class="form-label">Quantidade da perda:</label>
+            <input asp-for="@Model.LotePerda.QuantidadeSaida" class="form-control border-success" readonly />
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-secondary close-popup">Cancelar</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        function buscarLotes() {
+            var produtoId = document.getElementById("js-recupera-Lote").value;
+            var loteSelect = document.getElementById("IdLoteUsado");
+
+            if (produtoId !== "0") {
+                fetch(`/API/GetLotesByProduto?produtoId=${produtoId}`)
+                    .then(response => response.json())
+                    .then(lotes => {
+                        lotes.forEach(lote => {
+                            QTD_PERMITIDA_PRODUCTION = parseInt((lote.quantidadeLote - lote.quantidadeSaida));
+                            var option = document.createElement("option");
+                            option.value = lote.idCompra;
+                            option.text = `Lote ${lote.idCompra} (${lote.quantidadeLote} unidades restantes )`;
+                            loteSelect.add(option);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao buscar lotes:', error));
+            }
+        }
+    </script>
+}

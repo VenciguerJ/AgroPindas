@@ -3,7 +3,7 @@
 }
 @model IEnumerable<LoteMuda>
 
-<h1>@ViewData["Title"]</h1>
+<h1>Lotes de mudas prontas</h1>
 
 <br />
 
@@ -37,7 +37,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => lote.IdProducao)
+                    @Html.DisplayFor(modelItem => lote.Id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => lote.ProdutoMuda.Nome)
@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => lote.QuantidadeVendido)
                 </td>
                 <td>
-                    <a asp-action="DeleteLotePronto" asp-route-IdProduto="@lote.Id" class="btn btn-danger">
+                    <a asp-action="DeleteLotePronto" asp-route-id="@lote.Id" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i>
                     </a>
                 </td>

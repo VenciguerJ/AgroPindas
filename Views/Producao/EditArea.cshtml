@@ -34,7 +34,7 @@
             <h3>Detalhes do Suporte de calhas</h3>
         </div>
         <div class="card-body"> 
-            @if (Model.ProducaoCalha != null || Model.ProducaoCalha.Finalizada == true)
+            @if (Model.ProducaoCalha == null)
             {
                 <form asp-action="SaveProduction" method="post">
                     <input type="hidden" asp-for="SuporteProducao.Id" />
@@ -107,7 +107,7 @@
 
                     <div class="card mb-4 border-success">
                         <div class="card-body">
-                            <h5 class="card-title text-success">Inclusão de Fertilizantes</h5>
+                            <h5 class="card-title text-success">Fertilizantes presentes no suporte</h5>
                             <table class="table table-bordered border-success">
                                 <thead class="table-success">
                                     <tr>
@@ -118,6 +118,26 @@
                                 </thead>
                                 <tbody id="fertilizantesTableBody">
                                     <!-- Linhas serão adicionadas dinamicamente aqui -->
+                                    @foreach (var f in Model.fertilizantesView)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <select asp-for="@f.Id" class="form-control border-success">
+                                                    <option value="@f.Id">Selecione...</option>
+                                                    @foreach (var fertilizante in Model.produtosView)
+                                                    {
+                                                    <option value="@fertilizante.Id">@fertilizante.Nome</option>
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" asp-for="@f.QtdUtilizada" class="form-control border-success" placeholder="Quantidade">
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" onclick="removerFertilizante(this)">Remover</button>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                             <button type="button" class="btn btn-outline-success" onclick="adicionarFertilizante()">Adicionar Fertilizante</button>

@@ -23,13 +23,13 @@ public class ProducaoRepository : ICrudRepository<Producao>
     }
     public async Task<Producao?> Get(int idAtivo)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id and finalizada = 1", new { Id = idAtivo });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE Id = @Id and finalizada = 0", new { Id = idAtivo });
     }
 
-    public async Task <Producao?> Get(string IdInativo)
+    public async Task <Producao?> Get(string IdSuporteCalha)
     {
-        int realId = int.Parse(IdInativo);
-        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id and finalizada = 0", new { Id = IdInativo });
+        int realId = int.Parse(IdSuporteCalha);
+        return await _dbConnection.QueryFirstOrDefaultAsync<Producao>("SELECT * FROM Producao WHERE IdCalha = @Id and finalizada = 0", new { Id = realId });
     }
 
     public async Task Add(Producao entity)

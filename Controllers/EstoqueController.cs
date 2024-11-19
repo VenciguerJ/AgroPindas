@@ -110,9 +110,24 @@ namespace agropindas.Controllers
 
             foreach(var p in view)
             {
-                p.ProdutoMuda = await _produtos.Get(p.Id);
+                p.ProdutoMuda = await _produtos.Get(p.IdEstoqueProduto);
             }
             return View(view);
         } 
+
+        public async Task<IActionResult> DeleteLotePronto(int id) 
+        {
+            try
+            {
+                await _lote.DeleteLoteMuda(id);
+                TempData["SuccessMessage"] = "Exclusão realizada";
+                return RedirectToAction("LotesProntos");
+            }catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Erro ao realizar operação, verifique o console";
+                Console.WriteLine(ex.ToString());
+                return RedirectToAction("LotesProntos");
+            }
+        }
     }
 }

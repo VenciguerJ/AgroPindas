@@ -142,7 +142,21 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
 
     public async Task<IEnumerable<LoteMuda>> GetAllMudas()
     {
-        var resultado = await _dbConnection.QueryAsync<LoteMuda>("SELECT * FROM Estoque_Produto");
+        var query = @"
+        SELECT 
+            id AS Id,
+            id_estoque_produto AS IdEstoqueProduto,
+            id_producao AS IdProducao,
+            quantidade_inicial AS QuantidadeInicial,
+            quantidade_vendido AS QuantidadeVendido
+        FROM Estoque_Produto";
+
+        var resultado = await _dbConnection.QueryAsync<LoteMuda>(query);
         return resultado;
+    }
+
+    public async Task DeleteLoteMuda(int id)
+    {
+        await _dbConnection.ExecuteAsync("DELETE FROM Estoque_Produto WHERE id = @Id", new { Id = id } );
     }
 }

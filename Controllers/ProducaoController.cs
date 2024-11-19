@@ -38,14 +38,14 @@ namespace agropindas.Controllers
         {
             var sup = await _estoque.GetCalha(id);
             var produtosView = await _produtos.GetAll();
-            var producaoView = await _producao.Get(sup.Id);
+            var producaoView = await _producao.Get(sup.Id.ToString());
             var fertilizantes = await _estoque.GetAllFertilizantes(sup.Id);
 
             ProducaoViewModel view = new ProducaoViewModel(sup, produtosView, producaoView);
            
             view.fertilizantesView = fertilizantes;
 
-            if(view.ProducaoCalha != null || view.ProducaoCalha.Finalizada == true)
+            if(view.ProducaoCalha != null)
             {
                 view.LoteView = new LoteMuda();
                 view.LoteView.IdProducao = view.ProducaoCalha.Id;
@@ -59,6 +59,7 @@ namespace agropindas.Controllers
                 }
                 view.LoteView.QuantidadeInicial = view.ProducaoCalha.QuantidadeProduzido;
             }
+            view.fertilizantesView = await _estoque.GetAllFertilizantes(view.SuporteProducao.Id);
             return View(view);
         }
 
@@ -68,7 +69,7 @@ namespace agropindas.Controllers
             try
             {
                 //suporteCalha
-                if (PVM.ProducaoCalha != null)
+                if (PVM.ProducaoCalha != null) // valida se teve producao ao alterar
                 {
                     PVM.SuporteProducao.ocupada = true;
                 }
@@ -103,8 +104,8 @@ namespace agropindas.Controllers
 
                 await _estoque.Update(lote);
 
-                //define dia da
-                //.
+                //define dia da colheita 
+
                 var prod = await _produtos.Get(PVM.ProducaoCalha.IdProdutoProduzido);
                 PVM.ProducaoCalha.DiaColheita = DateTime.Now.AddDays(prod.DiasColheita);
                 PVM.ProducaoCalha.Finalizada = false;
@@ -112,6 +113,8 @@ namespace agropindas.Controllers
                 await _producao.Add(PVM.ProducaoCalha);
 
                 //Fertilizantes 
+
+                await _estoque.DeleteFertilizante(PVM.SuporteProducao.Id);
                 foreach(var f in Fertilizantes)
                 {
                     f.IdSuporte = PVM.SuporteProducao.Id;
@@ -161,10 +164,11 @@ namespace agropindas.Controllers
             {
             try
             {
-                var producaoPronta = await _producao.Get(l.IdProducao.ToString());
+                var producaoPronta = await _producao.Get(l.IdProducao);
                 producaoPronta.Finalizada = true;
-               await  _producao.Update(producaoPronta);
+                await  _producao.Update(producaoPronta);
                 await _estoque.Colheita(l);
+
                 TempData["SuccessMessage"] = "Colheita inclusa com sucesso!";
                 return RedirectToAction("Index");
             }
