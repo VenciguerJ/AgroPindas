@@ -161,7 +161,7 @@ namespace agropindas.Controllers
         }
 
         public async Task<IActionResult> Colheita(LoteMuda l)
-            {
+        {
             try
             {
                 var producaoPronta = await _producao.Get(l.IdProducao);

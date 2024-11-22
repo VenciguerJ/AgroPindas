@@ -5,6 +5,13 @@ using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 //string connectionString = @"Server=localhost;Database=PINDUCAS_farm;Integrated Security=True;
 //                        TrustServerCertificate=True;";
@@ -14,7 +21,7 @@ string connectionString = @"Server=DESKTOP-ADLTFRR\DATABASEXEANSAO;Database=PIND
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddControllers(); // pode tirar
 builder.Services.AddScoped<IDbConnection>(sp => new SqlConnection(connectionString));
 
 builder.Services.AddScoped<ILogin<Funcionario>, LoginRepository>();
@@ -24,9 +31,15 @@ builder.Services.AddScoped<ICrudRepository<Produto>, ProdutoRepository>();
 builder.Services.AddScoped<ISelectItems<ProdAssets>, ProdAssetsRepository>();
 builder.Services.AddScoped<ICrudRepository<Compra>, CompraRepositoy>();
 builder.Services.AddScoped<ICrudRepository<Producao>, ProducaoRepository>();
+builder.Services.AddScoped < ICrudRepository < Cliente >, ClienteRepository > ();
 builder.Services.AddScoped<EstoqueRepository>();
 
 var app = builder.Build();
+
+app.UseCors("AllowAll");
+
+app.UseAuthorization();
+app.MapControllers();
 
 //builder.Services.AddControllersWithViews();
 // Configure the HTTP request pipeline.

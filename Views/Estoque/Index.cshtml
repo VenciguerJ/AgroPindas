@@ -1,7 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Lotes";
 }
-@model IEnumerable<Lote>
+@model PerdaViewModel
+
+<style>
+     .popup-container {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+
+     .popup-form {
+         background: white;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     }
+
+</style>
 
 <h1>Gerenciar Estoque</h1>
 
@@ -12,7 +34,13 @@
         <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Pesquise o produto">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
+    <button type="button" class="btn btn-danger" onclick="togglePopup()">Lançar perda</button>
 </nav>
+
+
+<div id="popupContainer" class="popup-container" style="display: none;">
+    @await Html.PartialAsync("_PerdaPopUp", Model)
+</div>
 
 <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark" style="color: #18b955">
@@ -24,7 +52,7 @@
                 Produto
             </th>
             <th>
-                Quantidade do Lote
+                Quantidade do Lote (Atual)
             </th>
             <th>
                 Quantidade de saídas
@@ -33,7 +61,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var lote in Model)
+        @foreach (var lote in Model.Lotesview)
         {
             <tr>
                 <td>
@@ -57,3 +85,52 @@
         }
     </tbody>
 </table>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let alertElement = document.querySelector('.alert');
+        if (alertElement) {
+            alertElement.classList.add('show');
+        }
+    });
+
+    function togglePopup() {
+        const popup = document.getElementById("popupContainer");
+        popup.style.display = popup.style.display === "none" ? "block" : "none";
+    }
+
+    // Fecha o popup ao clicar em "Cancelar"
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("close-popup")) {
+            togglePopup();
+        }
+    });
+
+    function buscarLotes() {
+        var produtoId = document.getElementById("js-recupera-Lote").value;
+        var loteSelect = document.getElementById("IdLoteUsado");
+
+        // Limpa as opções anteriores
+        loteSelect.innerHTML = '<option value="0">Selecione um lote...</option>';
+
+        if (produtoId !== "0") {
+            fetch(`/API/GetLotesByProduto?produtoId=${produtoId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao buscar lotes. Código HTTP: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(lotes => {
+                    lotes.forEach(lote => {
+                        var option = document.createElement("option");
+                        option.value = lote.idCompra;
+                        option.text = `Lote ${lote.idCompra} (${lote.quantidadeLote - lote.quantidadeSaida} unidades restantes)`;
+                        loteSelect.add(option);
+                    });
+                })
+                .catch(error => console.error('Erro ao buscar lotes:', error));
+        }
+    }
+
+</script>

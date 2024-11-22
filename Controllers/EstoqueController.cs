@@ -20,8 +20,8 @@ namespace agropindas.Controllers
         }
         public async Task<ActionResult> Index(string searchString)
         {
+            var ProdutosView = await _produtos.GetAll();
             //Rota para ver os lotes
-            List<Lote> lotesView = null;
             if (string.IsNullOrWhiteSpace(searchString))
             {
                 var Lotes = await _lote.GetAll();
@@ -29,7 +29,8 @@ namespace agropindas.Controllers
                 {
                     l.Produto = await _produtos.Get(l.IdProduto);
                 }
-                return View(Lotes);
+                PerdaViewModel PVM = new(Lotes, ProdutosView);
+                return View(PVM);
             }
             else 
             {
@@ -39,7 +40,8 @@ namespace agropindas.Controllers
                 {
                     l.Produto = searchprod;
                 }
-                return View(lotes);
+                PerdaViewModel PVM = new(lotes, ProdutosView);
+                return View(PVM);
             }
         }
 
@@ -128,6 +130,15 @@ namespace agropindas.Controllers
                 Console.WriteLine(ex.ToString());
                 return RedirectToAction("LotesProntos");
             }
+        }
+
+        public async Task<IActionResult> Perda(PerdaViewModel p)
+        {
+            var lote = await _lote.Get(p.LotePerda.IdCompra);
+            lote.QuantidadeSaida = p.LotePerda.QuantidadeSaida;
+            lote.QuantidadeLote -= lote.QuantidadeSaida;
+            await _lote.Perda(lote);
+            return RedirectToAction("Index");
         }
     }
 }
