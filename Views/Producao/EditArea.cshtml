@@ -189,12 +189,7 @@
                         @await Html.PartialAsync("_ColheitaPopUp", Model.LoteView)
                     </div>
                 </div>
-
             }
-            <!-- Botão de Exclusão do Suporte (presente em ambas as condições) -->
-            <form asp-action="DeleteSuporte" asp-route-id="@Model.SuporteProducao.Id" method="post">
-                <button type="submit" class="btn btn-danger mt-4">Excluir Suporte</button>
-            </form>
         </div>
     </div>
 </div>
@@ -209,7 +204,7 @@
             var loteSelect = document.getElementById("IdLoteUsado");
 
             if (produtoId !== "0") {
-                fetch(`https://26.213.175.114:7154/API/GetLotesByProduto/${produtoId}`)
+                fetch(`http://26.213.175.114:5067/API/GetLotesByProduto/${produtoId}`)
                     .then(response => response.json())
                     .then(lotes => {
                         lotes.forEach(lote => {

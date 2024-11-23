@@ -85,7 +85,7 @@
     const table = document.getElementById('table-js-product');
     // Função para buscar o preço do produto via AJAX
     function buscarPrecoProduto(produtoId, callback) {
-        fetch(`https://26.213.175.114:7154/API/GetProduto/${produtoId}`)
+        fetch(`http://10.241.162.251:5067/API/GetProduto/${produtoId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao buscar o preço do produto.');

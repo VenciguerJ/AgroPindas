@@ -157,4 +157,14 @@ CREATE TABLE Venda(
 );
 
 
+DROP TABLE IF EXISTS Clientes
+
+CREATE TABLE Clientes(
+	Id int not null IDENTITY,
+	Nome varchar(50) not null,
+	Email varchar(50) not null,
+	CPF varchar(11)not null,
+	Senha varchar (20) not null
+);
+
 select * from Funcionarios;

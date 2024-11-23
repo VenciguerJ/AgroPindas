@@ -5,6 +5,11 @@ using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5067); //
+});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -32,6 +37,7 @@ builder.Services.AddScoped<ISelectItems<ProdAssets>, ProdAssetsRepository>();
 builder.Services.AddScoped<ICrudRepository<Compra>, CompraRepositoy>();
 builder.Services.AddScoped<ICrudRepository<Producao>, ProducaoRepository>();
 builder.Services.AddScoped < ICrudRepository < Cliente >, ClienteRepository > ();
+builder.Services.AddScoped<EstoqueRepository>();
 builder.Services.AddScoped<EstoqueRepository>();
 
 var app = builder.Build();

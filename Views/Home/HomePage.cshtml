@@ -3,7 +3,63 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bem Vindo ao Pindas Farm</h1>
-    <p>Esta tela terá informações mais interessantes<p>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Bem-vindo ao Sistema AgroPindas</h1>
+
+    <div class="row">
+        <!-- Resumo de Produtos -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5>Resumo de Produtos</h5>
+                    <a class="btn btn-dark" asp-controller="Produtos" asp-action="Index">Detalhes</a>
+                </div>
+                <div class="card-body">
+                    <h6>Total de Produtos:</h6>
+                    <p>@Model.TotalProdutos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo de Clientes -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5>Resumo de Clientes</h5>
+                    <a class="btn btn-dark" asp-controller="Cliente" asp-action="Index">Detalhes</a>
+                </div>
+                <div class="card-body">
+                    <h6>Total de Clientes Cadastrados:</h6>
+                    <p>@Model.TotalClientes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo de produçõpes -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5>Resumo de Produções em Andamento</h5>
+                    <a class="btn btn-dark" asp-controller="Producao" asp-action="Index">Detalhes</a>
+                </div>
+                <div class="card-body">
+                    <h6>Total de Produções:</h6>
+                    <p>@Model.TotalProducoes</p>
+                    <h6>Produções Concluídas:</h6>
+                    <p>@Model.ProducoesConcluidas</p>
+                    <h6>Produções Pendentes:</h6>
+                    <p>@Model.ProducoesPendentes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Notificações ou alertas -->
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                <strong>Aviso:</strong> Todos os dados apresentados são atualizados periodicamente. Para mais detalhes, acesse a seção específica de cada área.
+            </div>
+        </div>
+    </div>
 </div>

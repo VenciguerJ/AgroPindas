@@ -1,16 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Fornecedores";
+    ViewData["Title"] = "Cleintes";
 }
-@model IEnumerable<Fornecedor>
+
+@model IEnumerable<Cliente>
 
 <h1>@ViewData["Title"]</h1>
     
-<br />
+<br/>
 
 <nav class="navbar navbar-light bg-light d-flex justify-content-between">
     <a asp-action="Create" class="btn btn-success">Novo Fornecedor</a>
     <form class="form-inline d-flex" asp-action="Index" method="get">
-        <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Pesquise o Fornecedor">
+        <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Pesquise o produto">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
 </nav>
@@ -20,35 +21,38 @@
     <thead class="thead-dark" style="color: #18b955">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Codigo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CNPJ)
+                Nome
             </th> 
             <th>
-                @Html.DisplayNameFor(model => model.RazaoSocial)
+                CPF
             </th>
-            <th colspan="2">Ações</th>
+            <th>
+                e-mail
+            </th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var fornecedor in Model)
+        @foreach(var c in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => fornecedor.Id)
+                    @c.Id
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => fornecedor.CNPJ)
+                    @c.Nome
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => fornecedor.RazaoSocial)
+                    @c.CPF
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@fornecedor.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    @c.Email
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@fornecedor.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-action="Delete" asp-route-id="@c.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
         }

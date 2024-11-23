@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZwNCqD49Lf8QTY7zGvf7N8Pj7RU6aSY8wjVuRgvG/xw=",
+  "Hash": "YICPDMuKfVv1ccjaZjEiWuHQFg4DgrKV8o0euOaBIro=",
   "Source": "agropindas",
   "BasePath": "_content/agropindas",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\agropindas.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\bg.jpg",
+      "SourceId": "agropindas",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\",
+      "BasePath": "_content/agropindas",
+      "RelativePath": "Content/bg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\bg.jpg"
     },
     {
       "Identity": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\Fornecedor.jpg",

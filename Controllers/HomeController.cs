@@ -3,20 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 using agropindas.Models;
 using agropindas.Repositories;
 using Microsoft.Data.SqlClient;
+using System.Runtime.CompilerServices;
+using agropindas.Models.ViewModels;
 
 namespace agropindas.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly ILogin<Funcionario> _login;
     private readonly ICrudRepository<Funcionario> _crudRepository;
+    private readonly ICrudRepository<Cliente > _clienteRepository;
+    private readonly ICrudRepository<Produto> _produtoRepository;
+    private readonly ICrudRepository<Producao> _producaoRepository;
 
-    public HomeController(ILogger<HomeController> logger, ICrudRepository<Funcionario> FuncionarioRepository, ILogin<Funcionario> Ilogin)
+    public HomeController(ICrudRepository<Funcionario> FuncionarioRepository, ILogin<Funcionario> Ilogin, ICrudRepository<Cliente> clienteRepository, ICrudRepository<Produto> produtoRepository, ICrudRepository<Producao> producaoRepository)
     {
-        _logger = logger;
         _login = Ilogin;
         _crudRepository = FuncionarioRepository;
+        _clienteRepository = clienteRepository;
+        _produtoRepository = produtoRepository;
+        _producaoRepository = producaoRepository;
     }
 
     [HttpGet]
@@ -94,9 +100,29 @@ public class HomeController : Controller
         return View(formFunc);
     }
 
-    public IActionResult HomePage()
+    public async Task<IActionResult> HomePage()
     {
-        return View();
+        try
+        {
+            HomePageModel HPM = new HomePageModel();
+            var prod = await _produtoRepository.GetAll();
+            HPM.TotalProdutos = prod.Count();
+
+            var cli = await _clienteRepository.GetAll();
+            HPM.TotalClientes = cli.Count();
+
+            var producoes = await _producaoRepository.GetAll();
+            HPM.TotalProducoes = producoes.Count();
+            HPM.ProducoesPendentes = producoes.Where(p => p.Finalizada == false).Count();
+            HPM.ProducoesConcluidas = producoes.Where(p => p.Finalizada == true).Count();
+
+            return View(HPM);
+        }catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return View();
+        }
+        
     }
 
     public IActionResult Sobre()

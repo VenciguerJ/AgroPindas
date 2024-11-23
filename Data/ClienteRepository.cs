@@ -14,7 +14,7 @@ public class ClienteRepository : ICrudRepository<Cliente>
 
     public async Task<IEnumerable<Cliente>> GetAll()
     {
-        return await _dbConnection.QueryAsync<Cliente>("SELECT * FROM Cliente");
+        return await _dbConnection.QueryAsync<Cliente>("SELECT * FROM Clientes");
     }
     public async Task<IEnumerable<Cliente>> GetAll(string cpf)
     {
@@ -25,9 +25,9 @@ public class ClienteRepository : ICrudRepository<Cliente>
         return await _dbConnection.QueryFirstOrDefaultAsync<Cliente>("SELECT * FROM Cliente WHERE Id = @Id", new { Id = num });
     }
 
-    public async Task <Cliente?> Get(string cnpj)
+    public async Task <Cliente?> Get(string cpf)
     {
-        return await _dbConnection.QueryFirstOrDefaultAsync<Cliente>("SELECT * FROM Cliente WHERE CNPJ = @CNPJ", new { CNPJ = cnpj });
+        return await _dbConnection.QueryFirstOrDefaultAsync<Cliente>("SELECT * FROM Clientes WHERE CPF = @CPF", new { CPF = cpf });
     }
 
     public async Task Add(Cliente entity)
@@ -60,6 +60,6 @@ public class ClienteRepository : ICrudRepository<Cliente>
 
     public async Task Delete(int id)
     {
-        await _dbConnection.ExecuteAsync("DELETE FROM Cliente WHERE Id = @Id", new { Id = id });
+        await _dbConnection.ExecuteAsync("DELETE FROM Clientes WHERE Id = @Id", new { Id = id });
     }
 }

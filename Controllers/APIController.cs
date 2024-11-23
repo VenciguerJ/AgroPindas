@@ -57,6 +57,16 @@ public class APIController : ControllerBase
         }
     }
 
+        [HttpGet("GetAllProducts")]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            var products = await _produtos.GetAll();
+
+            var filteredProducts = products.Where(p => p.TipoProduto == 2);
+
+            return Ok(filteredProducts);
+        }
+
 
     //------------------funcções de funcionário------------------------
 
@@ -82,10 +92,10 @@ public class APIController : ControllerBase
     }
 
     [HttpPost("Authenticate")]
-    public async Task<IActionResult> Authenticate([FromBody] Cliente cliente)
+    public async Task<IActionResult> Authenticate([FromBody] AuthenticateDto dtoc)
     {
         // Verifica se o objeto cliente foi enviado corretamente
-        if (cliente == null || string.IsNullOrEmpty(cliente.CPF) || string.IsNullOrEmpty(cliente.Senha))
+        if (dtoc == null || string.IsNullOrEmpty(dtoc.CPF) || string.IsNullOrEmpty(dtoc.Senha))
         {
             return BadRequest("JSON inválido ou dados incompletos. Certifique-se de fornecer o email e a senha.");
         }
@@ -93,7 +103,7 @@ public class APIController : ControllerBase
         try
         {
             // Busca o cliente no repositório pelo email
-            var tmpCliente = await _cliente.Get(cliente.CPF);
+            var tmpCliente = await _cliente.Get(dtoc.CPF);
 
             // Verifica se o cliente foi encontrado
             if (tmpCliente == null)
@@ -102,7 +112,7 @@ public class APIController : ControllerBase
             }
 
             // Valida a senha
-            if (cliente.Senha != tmpCliente.Senha)
+            if (dtoc.Senha != tmpCliente.Senha)
             {
                 return Unauthorized("Senha incorreta.");
             }
