@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Data",
     "\\Properties",
-    "\\Repositories",
-    "\\Views\\Estoque",
-    "\\Views\\Home"
+    "\\Repositories"
   ],
-  "SelectedNode": "\\Properties\\launchSettings.json",
+  "SelectedNode": "\\Data\\PedidosRepository.cs",
   "PreviewInSolutionExplorer": false
 }

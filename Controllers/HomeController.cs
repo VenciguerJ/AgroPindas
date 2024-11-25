@@ -15,14 +15,16 @@ public class HomeController : Controller
     private readonly ICrudRepository<Cliente > _clienteRepository;
     private readonly ICrudRepository<Produto> _produtoRepository;
     private readonly ICrudRepository<Producao> _producaoRepository;
+    private readonly ICrudRepository<PedidoDto> _pedidosRepository;
 
-    public HomeController(ICrudRepository<Funcionario> FuncionarioRepository, ILogin<Funcionario> Ilogin, ICrudRepository<Cliente> clienteRepository, ICrudRepository<Produto> produtoRepository, ICrudRepository<Producao> producaoRepository)
+    public HomeController(ICrudRepository<Funcionario> FuncionarioRepository, ILogin<Funcionario> Ilogin, ICrudRepository<Cliente> clienteRepository, ICrudRepository<Produto> produtoRepository, ICrudRepository<Producao> producaoRepository, ICrudRepository<PedidoDto> ped)
     {
         _login = Ilogin;
         _crudRepository = FuncionarioRepository;
         _clienteRepository = clienteRepository;
         _produtoRepository = produtoRepository;
         _producaoRepository = producaoRepository;
+        _pedidosRepository = ped;
     }
 
     [HttpGet]
@@ -116,6 +118,9 @@ public class HomeController : Controller
             HPM.ProducoesPendentes = producoes.Where(p => p.Finalizada == false).Count();
             HPM.ProducoesConcluidas = producoes.Where(p => p.Finalizada == true).Count();
 
+            var pedidos = await _pedidosRepository.GetAll();
+            HPM.TotalPedidos = pedidos.Count();
+
             return View(HPM);
         }catch(Exception ex)
         {
@@ -135,4 +140,14 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    public async Task<IActionResult> Pedidos()
+    {
+        var pedidos = await _pedidosRepository.GetAll();
+        var Clientes = await _clienteRepository.GetAll();
+        PedidoView PDV = new PedidoView(pedidos,Clientes);
+
+        return View(PDV);
+    }
+
 }

@@ -9,5 +9,6 @@ namespace agropindas.Models.ViewModels
         public int TotalProducoes { get; set; }
         public int ProducoesConcluidas { get; set; }
         public int ProducoesPendentes { get; set; }
+        public int TotalPedidos { get; set; }
     }
 }

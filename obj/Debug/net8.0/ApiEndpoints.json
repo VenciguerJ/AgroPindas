@@ -1,1 +1,108 @@
-[]
+[
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "AddClient",
+    "RelativePath": "API/AddClient",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cliente",
+        "Type": "agropindas.Models.Cliente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "Authenticate",
+    "RelativePath": "API/Authenticate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dtoc",
+        "Type": "agropindas.Models.AuthenticateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "GetAllProducts",
+    "RelativePath": "API/GetAllProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "GetLotesByProduto",
+    "RelativePath": "API/GetLotesByProduto/{produtoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "GetPedidosByCpf",
+    "RelativePath": "API/GetPedidosByCpf/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "GetProduto",
+    "RelativePath": "API/GetProduto/{produtoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "agropindas.Controllers.APIController",
+    "Method": "CriarPedido",
+    "RelativePath": "API/pedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedidoRequest",
+        "Type": "agropindas.Models.PedidoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

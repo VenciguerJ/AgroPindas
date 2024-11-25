@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("agropindas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d0e64ed6cfbe342db66f8750df93614609a32fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75ef769dfd6c05148367acb07408b8dcd6369a66")]
 [assembly: System.Reflection.AssemblyProductAttribute("agropindas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("agropindas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,107 +17,111 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = agropindas
 build_property.RootNamespace = agropindas
-build_property.ProjectDir = D:\PC\Faculdade\4 Semestre\PIM\agropindas\
+build_property.ProjectDir = C:\PC\Faculdade\4 Semestre\PIM\agropindas\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\PC\Faculdade\4 Semestre\PIM\agropindas
+build_property.MSBuildProjectDirectory = C:\PC\Faculdade\4 Semestre\PIM\agropindas
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/Compra.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Cliente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/Compra.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxDb21wcmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/Index.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/LotesProntos.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/LotesProntos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxMb3Rlc1Byb250b3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/_PerdaPopUp.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Estoque/_PerdaPopUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVxfUGVyZGFQb3BVcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Create.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Edit.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Index.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Fornecedor/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/HomePage.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/Index.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/Register.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/CreateArea.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Home/Sobre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTb2JyZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/CreateArea.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cQ3JlYXRlQXJlYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/EditArea.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/EditArea.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cRWRpdEFyZWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/Index.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/_ColheitaPopUp.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Producao/_ColheitaPopUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjYW9cX0NvbGhlaXRhUG9wVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Create.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Edit.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Index.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Produto/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/Error.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/_ViewImports.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/_ViewStart.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/_Layout.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-encx2xct96
 
-[D:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/_layoutLogin.cshtml]
+[C:/PC/Faculdade/4 Semestre/PIM/agropindas/Views/Shared/_layoutLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-kmotzut69r

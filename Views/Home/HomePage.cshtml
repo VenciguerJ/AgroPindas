@@ -35,6 +35,20 @@
             </div>
         </div>
 
+        <!-- Resumo de pedidos -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5>Resumo de pedidos</h5>
+                    <a class="btn btn-dark" asp-controller="Home" asp-action="Pedidos">Detalhes</a>
+                </div>
+                <div class="card-body">
+                    <h6>Total de Pedidos Registrados:</h6>
+                    <p>@Model.TotalPedidos</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Resumo de produçõpes -->
         <div class="col-md-4 mb-4">
             <div class="card">
