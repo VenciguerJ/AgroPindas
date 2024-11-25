@@ -7,7 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
-    serverOptions.ListenAnyIP(5067); //
+    serverOptions.ListenAnyIP(5067);
+    serverOptions.ListenAnyIP(7154, listenOptions =>
+    {
+        listenOptions.UseHttps(@"D:\PC\Faculdade\4 Semestre\PIM\agropindas\wwwroot\Content\certificado.pfx", "123");
+    });
 });
 
 builder.Services.AddCors(options =>
@@ -37,7 +41,7 @@ builder.Services.AddScoped<ISelectItems<ProdAssets>, ProdAssetsRepository>();
 builder.Services.AddScoped<ICrudRepository<Compra>, CompraRepositoy>();
 builder.Services.AddScoped<ICrudRepository<Producao>, ProducaoRepository>();
 builder.Services.AddScoped < ICrudRepository < Cliente >, ClienteRepository > ();
-builder.Services.AddScoped<EstoqueRepository>();
+builder.Services.AddScoped<ICrudRepository<PedidoDto>, PedidoRepository>();
 builder.Services.AddScoped<EstoqueRepository>();
 
 var app = builder.Build();

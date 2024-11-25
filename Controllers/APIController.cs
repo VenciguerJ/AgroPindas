@@ -13,12 +13,14 @@ public class APIController : ControllerBase
     private readonly EstoqueRepository _estoque;
     private readonly ICrudRepository<Produto> _produtos;
     private readonly ICrudRepository<Cliente> _cliente;
-    
-    public APIController(EstoqueRepository e, ICrudRepository<Produto> p, ICrudRepository<Cliente> c)
+    private readonly ICrudRepository<PedidoDto> _pedidos;
+
+    public APIController(EstoqueRepository e, ICrudRepository<Produto> p, ICrudRepository<Cliente> c, ICrudRepository<PedidoDto> pedidos)
     {
         _estoque = e;
         _produtos = p;
         _cliente = c;
+        _pedidos = pedidos;
     }
 
     //AJAX FUNCTION
@@ -57,15 +59,15 @@ public class APIController : ControllerBase
         }
     }
 
-        [HttpGet("GetAllProducts")]
-        public async Task<IActionResult> GetAllProducts()
-        {
-            var products = await _produtos.GetAll();
+    [HttpGet("GetAllProducts")]
+    public async Task<IActionResult> GetAllProducts()
+    {
+        var products = await _produtos.GetAll();
 
-            var filteredProducts = products.Where(p => p.TipoProduto == 2);
+        var filteredProducts = products.Where(p => p.TipoProduto == 2);
 
-            return Ok(filteredProducts);
-        }
+        return Ok(filteredProducts);
+    }
 
 
     //------------------funcções de funcionário------------------------
@@ -129,4 +131,53 @@ public class APIController : ControllerBase
         }
     }
 
+    [HttpPost("pedido")]
+    public async Task<IActionResult> CriarPedido([FromBody] PedidoDto pedidoRequest)
+    {
+        // Validação básica
+        if (pedidoRequest == null || string.IsNullOrEmpty(pedidoRequest.CPF) || string.IsNullOrEmpty(pedidoRequest.Produtos))
+        {
+            return BadRequest("Os campos CPF e Produtos são obrigatórios.");
+        }
+
+        try
+        {
+            PedidoDto dto = new PedidoDto();
+
+            dto.Produtos = pedidoRequest.Produtos;
+            dto.CPF = pedidoRequest.CPF;
+
+            // Se tiver um repositório para salvar o pedido
+            await _pedidos.Add(dto);
+
+            return Ok(new { mensagem = "Pedido criado com sucesso!", dados = dto });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erro ao processar o pedido: {ex.Message}");
+        }
+    }
+
+    [HttpGet("GetPedidosByCpf/{cpf}")]
+    public async Task<IActionResult> GetPedidosByCpf(string cpf)
+    {
+        if (string.IsNullOrWhiteSpace(cpf))
+        {
+            return BadRequest("CPF não pode ser vazio.");
+        }
+
+        if (cpf.Length != 11 || !cpf.All(char.IsDigit))
+        {
+            return BadRequest("CPF inválido. Deve conter 11 dígitos numéricos.");
+        }
+
+        var pedidos = await _pedidos.GetAll(cpf);
+
+        if (pedidos == null || !pedidos.Any())
+        {
+            return NotFound("Nenhum pedido encontrado para este CPF.");
+        }
+
+        return Ok(pedidos);
+    }
 }

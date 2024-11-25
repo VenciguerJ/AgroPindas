@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\Content\\bg.jpg"
     },
     {
+      "Id": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\certificado.pfx",
+      "PackagePath": "staticwebassets\\Content\\certificado.pfx"
+    },
+    {
       "Id": "D:\\PC\\Faculdade\\4 Semestre\\PIM\\agropindas\\wwwroot\\Content\\produto.jpg",
       "PackagePath": "staticwebassets\\Content\\produto.jpg"
     },

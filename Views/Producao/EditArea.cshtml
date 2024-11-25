@@ -204,7 +204,7 @@
             var loteSelect = document.getElementById("IdLoteUsado");
 
             if (produtoId !== "0") {
-                fetch(`http://26.213.175.114:5067/API/GetLotesByProduto/${produtoId}`)
+                fetch(`https://26.213.175.114:7154/API/GetLotesByProduto/${produtoId}`)
                     .then(response => response.json())
                     .then(lotes => {
                         lotes.forEach(lote => {

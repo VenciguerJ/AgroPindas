@@ -2,6 +2,7 @@
 using agropindas.Models;
 using System.Data;
 using System.ComponentModel;
+using static Dapper.SqlMapper;
 
 
 namespace agropindas.Repositories;
@@ -171,4 +172,6 @@ public class EstoqueRepository //aqui está a logica de tratamento no banco de l
 
         await _dbConnection.ExecuteAsync(query, func);
     }
+
+
 }

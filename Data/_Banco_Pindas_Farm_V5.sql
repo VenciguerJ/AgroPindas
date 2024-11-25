@@ -168,3 +168,12 @@ CREATE TABLE Clientes(
 );
 
 select * from Funcionarios;
+
+DROP TABLE IF EXISTS Pedidos
+
+CREATE TABLE Pedidos(
+	Id int not null IDENTITY primary key,
+	CPF varchar(11)not null,
+	Produtos varchar (500) not null,
+	DataPedido datetime not null
+);
